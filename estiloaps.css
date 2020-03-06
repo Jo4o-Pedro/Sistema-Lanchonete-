@@ -1,9 +1,22 @@
 body{
-    background-color: whitesmoke;
+    background-color: rgba(221, 219, 217, 0.623);
     margin: 0;
     padding: 0;
     font-family: 'Spartan', sans-serif;
 }
+header{
+    height: 80px;
+}
+#logo{
+    position: relative;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.menu{
+    margin-top: 0px;
+}
+
 #menuinicial ul{
     float:right;
     padding:0px;
@@ -21,19 +34,19 @@ body{
     padding: 2px 10px;
     display: inline-block;
     text-decoration: none;
-    border-bottom:3px solid #EDEDED;
+    border-bottom:3px solid yellow;
     font-weight: bold;
+    margin-right: 25px;
 }
 
 
 #objPesquisa{
     padding: 6px;
     margin:3px;
-    background-color:;
     list-style:none;
 }
 
-#objPesquisa li{
+#objPesquisa ul li{
     display:inline;
     
 }
@@ -42,8 +55,10 @@ body{
     color: red;
     background-color: #ffffff;
     border: 0;
-    padding: 6px;
+    padding: 1%;
     font-weight: bold;
+    border-radius: 5px;
+    width: 15%;
 }
 
 #Burger:hover, #Frango:hover, #Pernil:hover, #Bebidas:hover{
@@ -54,16 +69,59 @@ body{
 
 
 #search{
-    background-color:white ;
-    padding:2px;
+    background-color:#EDEDED ;
+    padding:1%;
     margin: 0px;
     box-shadow: none;
     border: 0px ;
     border-bottom: 2px solid yellow; 
-    text  
+    float: right;
+    width: 30%;
 }
 
 textarea:focus, input:focus, select:focus {
     outline: 0;
 }
 
+.produto{
+    margin: 5%;
+}
+
+.tituloProduto{
+    background-color: tomato;
+    text-align: center;
+    border-radius: 10px  10px 0 0 ;
+    padding: 1% 0 1% 0;
+}
+
+.infosProduto{
+    background-color: rgb(245, 125, 104);
+    text-align: left;
+    padding: 2%;
+    width: auto;
+    overflow:auto;
+}
+
+.finalCaixaLanche{
+    background-color: tomato;
+    border-radius: 0 0 10px 10px;
+}
+
+.assinatura{
+    background-color: #151516;
+    color: turquoise;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+}
+.carrinho{
+    position:fixed;
+    z-index:999;
+    left: 46%; 
+    bottom: 20px;
+    overflow:hidden;
+    border: 0;
+    padding:12px;
+    border-radius: 50%;
+    color:red;
+    background-color: deepskyblue;
+}
