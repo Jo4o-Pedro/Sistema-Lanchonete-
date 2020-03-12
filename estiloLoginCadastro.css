@@ -1,0 +1,61 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: rgb(241, 85, 57);
+    font-family: 'Spartan', sans-serif;
+}
+
+.cabecalho{
+    text-align: center;
+    padding: 5% 0 0 0 ;
+    color: #FFF;
+}
+.paicadastro{
+    width: 94%;
+    height: 94vh;
+    background: rgb(241, 85, 57);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+    
+    
+}
+
+.dados{
+    width: 300px;
+    height: 300px;
+    padding: 20%;
+    border-radius: 2%;
+    background: rgb(245, 114, 91);
+}
+
+.dados ul li{
+    display:block ;
+    
+}
+
+.dados ul li input{
+    background-color: ;
+    height: 25px;
+    width:  100%;
+}
+.finalcadastro{
+    margin-top:10px;
+    border-radius: 5px;
+    color: red;
+    border-right: 10px;
+    font-weight: bold;
+}
+
+.finalcadastro:hover{
+    background-color: rgba(255, 0, 0, 0.582);
+    color: white;
+    
+}
+
+.legenda{
+    color: rgba(241, 241, 236, 0.973)
+}
