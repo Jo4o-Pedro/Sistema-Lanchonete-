@@ -9,21 +9,24 @@
 </head>
 <body>
     <header class='menu'>
-        <div id="logo"><strong>BACKDONALDS</strong></div>
-        <nav id="menuinicial">
-             <ul class="btn">
-                 <li><a href="" class="btnmenu">home</a><br/></li>
-                  <li><a href=""class="btnmenu">login</a><br/></li>
-                <li><a href=""class="btnmenu">cadastar</a><br/></li>
-            </ul>
-        </nav></br> 
+        <div id='menurelativo'>
+            <div id="logo"><strong>BACKDONALDS</strong></div>
+            <nav id="menuinicial">
+                <ul class="btn">
+                    <li><a href="" class="btnmenu">home</a><br/></li>
+                    <li><a href=""class="btnmenu">login</a><br/></li>
+                    <li><a href=""class="btnmenu">cadastar</a><br/></li>
+                </ul>
+                <button src="teste.png"></button>
+            </nav></br>
+        </div> 
         <br>
         <br>
     </header>
-    <hr>
+    <img src='teste.png' width="10%" height="10%"/>
     <div class="pagina">
         <div id="objPesquisa">
-            <ul >
+            <ul>
                 <li> <input type="button" id="Burger" value="Burgers"> </li>
                 <li> <input type="button" id="Frango" value="Frango"> </li>
                 <li> <input type="button" id="Pernil" value="Pernil"> </li>
@@ -149,12 +152,25 @@
             </div>
         </div>
 
-        <button class="carrinho">teste</button>
+        <button class="carrinho">carrinho</button>
                 
-    </div>
+
     <footer>
         <p class="assinatura">A developer service by VSB JP</p>
     </footer>
     
+    </div>
+    <div class="modalLogin">
+        <div class="modal">
+            <button class="fechar">x</button>
+            <h3 class="legendaLogin"> LOGIN </h3>
+            <form>
+                <input type="text" class="inputLogin" placeholder="E-mail"><br/>
+                <input type="password" class="userkeyLogin" placeholder="Senha"/>
+                <input type="button" class="botaoLogin" value="LOGIN">
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
