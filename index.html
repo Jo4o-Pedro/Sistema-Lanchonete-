@@ -5,7 +5,7 @@
     <title>Pagina Principal</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='estiloaps.css'>
-    <script src='dinamismo.js'></script>
+    
 </head>
 <body>
     <header class='menu'>
@@ -13,9 +13,9 @@
             <div id="logo"><strong>BACKDONALDS</strong></div>
             <nav id="menuinicial">
                 <ul class="btn">
-                    <li><a href="" class="btnmenu">home</a><br/></li>
-                    <li><a href=""class="btnmenu">login</a><br/></li>
-                    <li><a href=""class="btnmenu">cadastar</a><br/></li>
+                    <li><a href="" >home</a><br/></li>
+                    <li><a class="btnmenu">login</a><br/></li>
+                    <li><a href="">cadastar</a><br/></li>
                 </ul>
                 <button src="teste.png"></button>
             </nav></br>
@@ -160,8 +160,8 @@
     </footer>
     
     </div>
-    <div class="modalLogin">
-        <div class="modal">
+    <div class="modalLogin" id="modalID">
+        <div class="modal" id="modalDentro">
             <button class="fechar">x</button>
             <h3 class="legendaLogin"> LOGIN </h3>
             <form>
@@ -171,6 +171,6 @@
             </form>
         </div>
     </div>
-
+    <script src='dinamismo.js'></script>
 </body>
 </html>
