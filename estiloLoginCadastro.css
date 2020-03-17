@@ -19,9 +19,20 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center
-    
-    
+    align-items: center;
+    animation-name: move;
+    animation-duration: 1000ms;
+        
+}
+@keyframes move{
+    from{
+        opacity: 0;
+        transform: translateX(-30%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0%);
+    }
 }
 
 .dados{
@@ -29,7 +40,7 @@ body{
     height: 300px;
     padding: 20%;
     border-radius: 2%;
-    background: rgb(245, 114, 91);
+    background: rgb(245, 245, 245);
 }
 
 .dados ul li{
@@ -48,7 +59,9 @@ body{
     color: red;
     border-right: 10px;
     font-weight: bold;
+
 }
+
 
 .finalcadastro:hover{
     background-color: rgba(255, 0, 0, 0.582);
@@ -57,5 +70,18 @@ body{
 }
 
 .legenda{
-    color: rgba(241, 241, 236, 0.973)
+    color: rgba(0, 0, 0, 0.800)
+}
+
+.form-hide {
+    animation: down 1000ms forwards;
+}
+
+@keyframes down{
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(100vh);
+    }
 }
