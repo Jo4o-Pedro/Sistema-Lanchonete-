@@ -1,2 +1,2 @@
 # Sistema-Lanchonete-
-Sistema de lanchonete online, utilizando Java, Postgresql e algumas outras tecnologias
+Sistema de lanchonete online, utilizando Java Web EE 7, Maven, Postgresql e algumas outras tecnologias
