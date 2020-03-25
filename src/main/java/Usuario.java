@@ -1,3 +1,4 @@
+package crud;
 
 public class Usuario {
     private String nome = null;

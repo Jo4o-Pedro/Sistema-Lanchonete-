@@ -16,4 +16,4 @@ form.addEventListener("animationend", event =>{
     form.style.display = "none";
     document.querySelector("body").style.overflow = "none";
     
-})
+});
