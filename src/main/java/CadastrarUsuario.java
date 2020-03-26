@@ -1,7 +1,7 @@
 import crud.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +13,22 @@ public class CadastrarUsuario extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+
         String nombre = request.getParameter("nome");
         String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        String telefone = "telefone";
 
-        
-        request.setAttribute("usuario", nombre);
-        request.setAttribute("email", email);
+        Usuario usuario = new Usuario();
 
-        String url = ("computador.jsp?nome=" + nombre + "&email=" + email);
-        response.sendRedirect(url);
+        usuario.SetNome(nombre);
+        usuario.SetEmail(email);
+        usuario.SetSenha(senha);
+        usuario.SetTelefone(telefone);
+
+        request.setAttribute("usuario", usuario);
+        RequestDispatcher disp = request.getRequestDispatcher("computador.jsp");
+        disp.forward(request, response);
     }
 
 }
