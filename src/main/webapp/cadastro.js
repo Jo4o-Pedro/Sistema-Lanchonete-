@@ -1,19 +1,12 @@
-const Submit = document.querySelector(".finalcadastro");
-const form = document.querySelector(".cadastrar");
 
-Submit.addEventListener("click", event =>{
-    event.preventDefault();
-    form.classList.add("form-hide");
-});
-
-form.addEventListener("animationstart", event=>{
-    if (event.animationName == "down")
-    document.querySelector("body").style.overflow = "hidden";
-});
-
-form.addEventListener("animationend", event =>{
-    if (event.animationName == "down") 
-    form.style.display = "none";
-    document.querySelector("body").style.overflow = "none";
-    
-});
+function onlynumber(evt) {
+   var theEvent = evt || window.event;
+   var key = theEvent.keyCode || theEvent.which;
+   key = String.fromCharCode( key );
+   //var regex = /^[0-9.,]+$/;
+   var regex = /^[0-9.]+$/;
+   if( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+   }
+}

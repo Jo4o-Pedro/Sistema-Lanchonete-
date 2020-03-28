@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(221, 219, 217, 0.623);
+    background-color: rgba(252, 252, 252, 0.363);
     margin: 0;
     padding: 0;
     font-family: 'Spartan', sans-serif;
@@ -10,8 +10,7 @@ header{
     position: sticky;
     top: 0;
     padding: 5px;
-    background-color: rgba(221, 219, 217, 1);
-    border: 2px solid #4CAF50;
+    background-color: rgba(255, 255, 255, 0.959);
     
 }
 #logo{
@@ -62,7 +61,7 @@ header{
 
 #Burger, #Frango, #Pernil, #Bebidas{
     color: red;
-    background-color: #ffffff;
+    background-color: #f8d5d1;
     border: 0;
     padding: 1%;
     font-weight: bold;
@@ -79,7 +78,7 @@ header{
 
 
 #search{
-    background-color:#EDEDED ;
+    background-color:rgba(255, 255, 255, 0.171) ;
     padding:1%;
     margin: 0px;
     box-shadow: none;

@@ -7,9 +7,23 @@ body{
     font-family: 'Spartan', sans-serif;
 }
 
+.menu{
+    background-color: rgba(255, 255, 255, 0.342);
+}
+
+.menu a{
+    float: left;
+    text-decoration: none;
+    color: black;
+    background-color: rgba(255, 254, 254, 0.527);
+    padding: 10px;
+    margin: 10px 0 0 10px;
+    border-radius: 10px;
+}
+
 .cabecalho{
     text-align: center;
-    padding: 5% 0 0 0 ;
+    padding: 5% 0 0 0;
     color: #FFF;
 }
 .paicadastro{
@@ -45,12 +59,12 @@ body{
 
 .dados ul li{
     display:block ;
-    
 }
 
 .dados ul li input{
     height: 25px;
     width:  100%;
+    border: none;
 }
 .finalcadastro{
     margin-top:10px;
@@ -58,14 +72,16 @@ body{
     color: red;
     border-right: 10px;
     font-weight: bold;
-
+    background-color: rgba(243, 132, 104, 0.692);
+    cursor: pointer;
+    border: none;
 }
 
 
 .finalcadastro:hover{
-    background-color: rgba(255, 0, 0, 0.582);
+    background-color: rgba(255, 0, 0, 0.911);
     color: white;
-    
+  
 }
 
 .legenda{

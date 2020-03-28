@@ -161,10 +161,10 @@
         <div class="modal" id="modalDentro">
             <button class="fechar">x</button>
             <h3 class="legendaLogin"> LOGIN </h3>
-            <form>
-                <input type="text" class="inputLogin" placeholder="E-mail"><br/>
-                <input type="password" class="userkeyLogin" placeholder="Senha"/>
-                <input type="button" class="botaoLogin" value="LOGIN">
+            <form action="/Sistema-Lanchonete-/loginUsuario" method="post">
+                <input type="text" name ="email" class="inputLogin" placeholder="E-mail"><br/>
+                <input type="password" name="senha" class="userkeyLogin" placeholder="Senha"/>
+                <input type="submit" class="botaoLogin" value="LOGIN">
             </form>
         </div>
     </div>
