@@ -1,17 +1,15 @@
 body{
-    background-color: rgba(221, 219, 217, 0.623);
+    background-color: rgba(252, 252, 252, 0.363);
     margin: 0;
     padding: 0;
     font-family: 'Spartan', sans-serif;
 }
 header{
     right: 0;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     padding: 5px;
-    background-color: rgba(221, 219, 217, 1);
-    border: 2px solid #4CAF50;
+    background-color: rgba(255, 255, 255, 0.959);
     
 }
 #logo{
@@ -22,7 +20,6 @@ header{
 
 .menu{
     margin-top: 0px;
-    
 }
 
 #menuinicial ul{
@@ -32,6 +29,7 @@ header{
     list-style:none;
     cursor: pointer;
 }
+
 #menuinicial ul li {
     display: inline;
     position: relative; 
@@ -62,7 +60,7 @@ header{
 
 #Burger, #Frango, #Pernil, #Bebidas{
     color: red;
-    background-color: #ffffff;
+    background-color: #f8d5d1;
     border: 0;
     padding: 1%;
     font-weight: bold;
@@ -79,7 +77,7 @@ header{
 
 
 #search{
-    background-color:#EDEDED ;
+    background-color:rgba(255, 255, 255, 0.171) ;
     padding:1%;
     margin: 0px;
     box-shadow: none;
@@ -118,8 +116,8 @@ textarea:focus, input:focus, select:focus {
 }
 
 .assinatura{
-    background-color: #151516;
-    color: turquoise;
+    background-color: #ce2b1fbe;
+    color: rgb(252, 252, 252);
     padding-bottom: 15px;
     margin-bottom: 0;
 }
@@ -132,8 +130,13 @@ textarea:focus, input:focus, select:focus {
     border: 0;
     padding:12px;
     border-radius: 50%;
-    color:red;
-    background-color: deepskyblue;
+    color:rgba(7, 3, 3, 0.966);
+    background-color: rgb(253, 249, 16);
+}
+
+.carrinho:hover{
+    background-color: rgb(223, 219, 219);
+    color: rgb(255, 217, 0);
 }
 
 .modalLogin{
@@ -209,4 +212,22 @@ textarea:focus, input:focus, select:focus {
     background: rgba(255, 255, 0, 1);
     color: rgb(255, 255, 255);
     cursor: pointer;
+}
+
+.telaCarrinho{
+    width: 100%;
+    height: 20%;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(245, 245, 245);
+}
+
+.telaCarrinho{
+    border: solid;
+}
+
+.telaCarrinho ul li{
+    border: solid;
+    list-style: none;
+    display: inline;
 }

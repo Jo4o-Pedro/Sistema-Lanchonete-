@@ -1,0 +1,64 @@
+body{
+    font-family: 'Spartan', sans-serif;
+}
+
+.menu{
+    list-style: none;
+}
+
+.menu ul li{
+    display: inline;
+    padding: 10px;
+    background-color: blueviolet;
+}
+
+.blocoInfo{
+    background-color: blueviolet;
+}
+
+.blocoInfo Div{
+    padding: 5px;
+}
+
+.blocoInfo label{
+    padding: 0 10px 0 0;
+    font-size:large;
+}
+
+.blocoInfo input{
+    width: 250px;
+    height: 20px;
+}
+
+#CodigoProd label{
+    padding: 0 28px 0 0;
+}
+
+#NomeReduzido label{
+    padding: 0 46px 0 0;
+}
+
+#DescricaoProd label{
+    padding: 0 85px 0 0;
+}
+
+#CategoriaProd label{
+    padding: 0 87px 0 0;
+}
+
+#ComboCategoria{
+    width: 100px;
+}
+
+#InfoProd label{
+    padding: 0 14px 0 0;
+}
+
+#InfoProd textarea{
+    height: 50px;
+    width: 250px;
+    overflow:auto;
+    box-sizing: border-box;
+    resize: none;
+    
+}
