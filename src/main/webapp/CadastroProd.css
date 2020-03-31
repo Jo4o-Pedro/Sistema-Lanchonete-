@@ -1,3 +1,7 @@
+body{
+    font-family: 'Spartan', sans-serif;
+}
+
 .menu{
     list-style: none;
 }
@@ -18,6 +22,7 @@
 
 .blocoInfo label{
     padding: 0 10px 0 0;
+    font-size:large;
 }
 
 .blocoInfo input{
@@ -41,13 +46,19 @@
     padding: 0 87px 0 0;
 }
 
+#ComboCategoria{
+    width: 100px;
+}
+
 #InfoProd label{
     padding: 0 14px 0 0;
 }
 
-#InfoProd input{
+#InfoProd textarea{
     height: 50px;
+    width: 250px;
     overflow:auto;
     box-sizing: border-box;
     resize: none;
+    
 }
