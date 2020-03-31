@@ -1,4 +1,5 @@
-import crud.Usuario;
+import models.Usuario;
+import DAO.ClientesDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.*;
@@ -6,29 +7,39 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 
-@WebServlet("/cadastro/novoUsu")
+@WebServlet("/cadastro/novoUsuario")
 public class CadastrarUsuario extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    throws ServletException, IOException{
+        try{
+            String nombre = request.getParameter("nome");
+            String email = request.getParameter("email");
+            String senha = request.getParameter("senha");
+            String telefone = request.getParameter("telefone");
+            System.out.println("Executando servlet");
 
-        String nombre = request.getParameter("nome");
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
-        String telefone = "telefone";
+            ClientesDao dao = new ClientesDao();
+            Usuario user = new Usuario();
 
-        Usuario usuario = new Usuario();
+            user.SetNome(nombre);
+            user.SetEmail(email);
+            user.SetTelefone(telefone);
+            user.SetSenha(senha);
 
-        usuario.SetNome(nombre);
-        usuario.SetEmail(email);
-        usuario.SetSenha(senha);
-        usuario.SetTelefone(telefone);
-
-        request.setAttribute("usuario", usuario);
-        RequestDispatcher disp = request.getRequestDispatcher("computador.jsp");
-        disp.forward(request, response);
+            dao.Insert(user);
+            
+            request.setAttribute("usuario", user);
+            RequestDispatcher disp = request.getRequestDispatcher("computador.jsp");
+            disp.forward(request, response);
+         } catch (ClassNotFoundException ex) {
+            System.out.println("DEU ERRADO"+ ex);
+        } catch (SQLException ex) {
+            System.out.println("DEU ERRADO "+ ex);
+        }
     }
 
 }

@@ -6,14 +6,15 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import models.pessoa;
+
+import models.Usuario;
 import utilitarios.ConnectionFactory;
 
 /** puxando conexão com do Banco*/
-public class clientesDao {
+public class ClientesDao {
     private Connection conn;
     
-    public clientesDao() throws ClassNotFoundException, SQLException{
+    public ClientesDao() throws ClassNotFoundException, SQLException{
         this.conn = ConnectionFactory.getConnection();
     }
 
@@ -25,16 +26,16 @@ public class clientesDao {
     }
     
 /**cria o SQL do insert q sera enviado para o Banco */
-    public void insert(pessoa p) throws SQLException {
-        String sql = "INSERT INTO pessoa(nome, email, telefone, senha) VALUES(?,?,?,?)";
+    public void Insert(Usuario user) throws SQLException {
+        String sql = "INSERT INTO usuario(nome, email, telefone, senha) VALUES(?,?,?,?)";
         
         /**pegando os gets de pessoa q deverão der preenchidos */
         PreparedStatement stmt = this.conn.prepareStatement(sql);
-            stmt.setString(1, p.GetNome());
-            stmt.setString(2, p.GetEmail());
-            stmt.setInt(3, p.GetTelefone());
-            stmt.setString(4, p.GetSenha());
-            
+            stmt.setString(1, user.GetNome());
+            stmt.setString(2, user.GetEmail());
+            stmt.setString(3, user.GetTelefone());
+            stmt.setString(4, user.GetSenha());
+            System.out.println("CHEGOU NO INSERT");
             stmt.executeUpdate();
             
             stmt.close();

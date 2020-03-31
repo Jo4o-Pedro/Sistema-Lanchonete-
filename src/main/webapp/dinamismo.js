@@ -14,9 +14,9 @@ const login = document.querySelector('.btnmenu')
 login.addEventListener('click', () => iniciaModal('modalID'));
 
 
-function MostraCarrinho()
+//function MostraCarrinho()
 
 
 
-const carrinho = document.querySelector('.carrinho')
-carrinho.addEventListener('click', () => MostraCarrinho('MostraCarrinho'));
+//const carrinho = document.querySelector('.carrinho')
+//carrinho.addEventListener('click', () => MostraCarrinho('MostraCarrinho'));

@@ -1,4 +1,4 @@
-<%@page import="crud.Usuario" %>
+<%@page import="models.Usuario" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

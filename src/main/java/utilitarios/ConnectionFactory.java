@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package utilitarios;
 
 import static java.sql.DriverManager.getConnection;
@@ -14,19 +10,15 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
-import models.pessoa;
+import models.Usuario;
 
-/**
- *
- * @author vinicius
- */
 /**criando uma classe de conecxão Conection Factoy */
 public class ConnectionFactory {
     public static Connection getConnection() throws ClassNotFoundException, SQLException{
         /**salvando informações necessarias pra conexão */
-        String url = "jdbc:postgresql://localhost:5432/SistemaAps";
+        String url = "jdbc:postgresql://localhost:5432/BancoAPS";
         String usuario = "postgres";
-        String senha = "240816vsb";
+        String senha = "postgres";
         
         Class.forName("org.postgresql.Driver");
         /**retornando o resultado da conexão*/

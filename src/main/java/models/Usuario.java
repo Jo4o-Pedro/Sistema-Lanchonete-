@@ -1,19 +1,18 @@
-
 package models;
 
 /**classe pessoa tem Gets e Sets necessarios para cadastrar uma pessoa no db*/
-public class pessoa {
+public class Usuario {
     private Long id;
     private String nome;
     private String email;
-    private Integer telefone;
+    private String telefone;
     private String senha;
     
-    public pessoa(){
+    public Usuario(){
     
 }
     
-    public pessoa(Long id, String nome, String email, Integer telefone, String senha){
+    public Usuario(Long id, String nome, String email, String telefone, String senha){
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -21,7 +20,7 @@ public class pessoa {
         this.senha = senha;
     }
     
-     public pessoa(String nome, String email, Integer telefone, String senha){
+     public Usuario(String nome, String email, String telefone, String senha){
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -44,7 +43,7 @@ public class pessoa {
     this.senha = senha;
     }
 
-    public void SetTelefone(Integer telefone){
+    public void SetTelefone(String telefone){
     this.telefone = telefone;
     }
 
@@ -64,7 +63,7 @@ public class pessoa {
     return senha;
     }
 
-    public Integer GetTelefone(){
+    public String GetTelefone(){
     return telefone;
     }
 
