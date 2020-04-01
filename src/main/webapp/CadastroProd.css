@@ -1,23 +1,40 @@
 body{
+    width: 100%;
+    margin:0;
+    padding: 0;
     font-family: 'Spartan', sans-serif;
+    background-color: blueviolet;
 }
 
 .menu{
+    padding: 1%;
     list-style: none;
 }
-
+#PAGINAINTEIRA{
+    width: 100%;
+    margin: 0 auto;
+}
 .menu ul li{
+    width: 50%;
+    cursor: pointer;
     display: inline;
     padding: 10px;
-    background-color: blueviolet;
+    background-color: rgb(71, 26, 112);
+    color: white;
+}
+
+.formCadastro{
+width: 100%;
 }
 
 .blocoInfo{
+    width: 30%;
     background-color: blueviolet;
+    padding: 10%;
 }
 
 .blocoInfo Div{
-    padding: 5px;
+    left: 50%;
 }
 
 .blocoInfo label{
@@ -48,6 +65,10 @@ body{
 
 #ComboCategoria{
     width: 100px;
+    height: 20px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 #InfoProd label{
@@ -60,5 +81,12 @@ body{
     overflow:auto;
     box-sizing: border-box;
     resize: none;
-    
+}
+
+#Preco input::-webkit-inner-spin-button, 
+#Preco input::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }

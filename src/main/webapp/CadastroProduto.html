@@ -10,40 +10,75 @@
 <body>
     <header>
         <div class="menu">
-            <ul >
-                <li>Cadastro 1</li>
-                <li>Cadastro 2</li>
-                <li>Cadastro 3</li>
+            <ul>
+                <li>Cadastro Produto</li>
+                <li>Recebimento Produto </li>
             </ul>
         </div>
     </header>
-    <div PAGINA INTEIRA>
+    <div id = "PAGINAINTEIRA">
         <div class="blocoInfo">
-            <div id="CodigoProd">
-                <label>Codigo do Produto</label><br>
-                <input type="text" />  
-            </div>
-            <div id="NomeReduzido">
-                <label>Nome Reduzido</label><br>
-                <input type="text" />
-            </div>
-            <div id="DescricaoProd">
-                <label>Descrição</label><br>
-                <input type="text" />
-            </div>
-            <div id="CategoriaProd">
-                <label>Categoria</label><br>
-                <select id="ComboCategoria">
-                    <option value="Burger"> Burger </option>
-                    <option value="Frango"> Frango </option>
-                    <option value="Pernil"> Pernil </option>
-                    <option value="Bebida"> Bebida </option>
-                </select>
-            </div>
-            <div id="InfoProd">
-                <label>Informações Produto</label><br>
-                <textarea></textarea>
-            </div>
+            <form class="formCadastro">
+                <div id="CodigoProd">
+                    <label>Codigo do Produto</label><br>
+                    <input type="text" />  
+                </div>
+                <div id="NomeReduzido">
+                    <label>Nome Reduzido</label><br>
+                    <input type="text" />
+                </div>
+                <div id="DescricaoProd">
+                    <label>Descrição</label><br>
+                    <input type="text" />
+                </div>
+                <div id="CategoriaProd">
+                    <label>Categoria</label><br>
+                    <select id="ComboCategoria">
+                        <option value="Bebida"> Bebida </option>
+                        <option value="Burger"> Burger </option>
+                        <option value="Frango"> Frango </option>
+                        <option value="Pernil"> Pernil </option>
+                    </select>
+                </div>
+                <div id="InfoProd">
+                    <label>Informações Produto</label><br>
+                    <textarea></textarea>
+                </div>
+                <br>
+                <div id="Preco">
+                    <label>Preço</label><br>
+                    <input type="number" />
+                </div>
+                <br>
+            </form>
+        </div>
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        <div class="blocoentrada">
+            <h3>entrada de mercadoria</h3>
+            <form>
+                <div id="codigoentrada">
+                    <label>Codigo do produto</label><br>
+                    <input type="text" />  
+                </div>
+                <div id="quant-entrada">
+                    <label>quantidade</label><br>
+                    <input type="number" />
+                </div>
+                <div id="validade">
+                    <label>validade do produto</label><br>
+                    <input type="data" />
+                </div>
+                <div id="InfoProd">
+                    <label>observações</label><br>
+                    <textarea></textarea>
+                </div>
+                <div id="marcaentrada">
+                    <label>marca</label><br>
+                    <input type="text" />
+                </div>
+                <br>
+            </form>
         </div>
     </div>
 </body>
