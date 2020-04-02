@@ -11,26 +11,26 @@
     <header>
         <div class="menu">
             <ul>
-                <li>Cadastro Produto</li>
-                <li>Recebimento Produto </li>
+                <li id="CadastraProduto">Cadastro Produto</li>
+                <li id="RecebeProduto">Recebimento Produto </li>
             </ul>
         </div>
     </header>
     <div id = "PAGINAINTEIRA">
-        <div class="blocoInfo">
+        <div id="blocoCadastro">
             <form class="formCadastro">
                 <div id="CodigoProd">
                     <label>Codigo do Produto</label><br>
                     <input type="text" />  
-                </div>
+                </div><br>
                 <div id="NomeReduzido">
                     <label>Nome Reduzido</label><br>
                     <input type="text" />
-                </div>
+                </div><br>
                 <div id="DescricaoProd">
                     <label>Descrição</label><br>
                     <input type="text" />
-                </div>
+                </div><br>
                 <div id="CategoriaProd">
                     <label>Categoria</label><br>
                     <select id="ComboCategoria">
@@ -39,7 +39,7 @@
                         <option value="Frango"> Frango </option>
                         <option value="Pernil"> Pernil </option>
                     </select>
-                </div>
+                </div><br>
                 <div id="InfoProd">
                     <label>Informações Produto</label><br>
                     <textarea></textarea>
@@ -52,34 +52,33 @@
                 <br>
             </form>
         </div>
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        <div class="blocoentrada">
-            <h3>entrada de mercadoria</h3>
+        <div id="blocoEntrada">
             <form>
                 <div id="codigoentrada">
                     <label>Codigo do produto</label><br>
                     <input type="text" />  
-                </div>
+                </div><br>
                 <div id="quant-entrada">
-                    <label>quantidade</label><br>
+                    <label>Quantidade</label><br>
                     <input type="number" />
-                </div>
+                </div><br>
                 <div id="validade">
-                    <label>validade do produto</label><br>
+                    <label>Validade do produto</label><br>
                     <input type="data" />
-                </div>
+                </div><br>
                 <div id="InfoProd">
-                    <label>observações</label><br>
+                    <label>Observações</label><br>
                     <textarea></textarea>
-                </div>
+                </div><br>
                 <div id="marcaentrada">
-                    <label>marca</label><br>
+                    <label>Marca</label><br>
                     <input type="text" />
                 </div>
                 <br>
             </form>
         </div>
     </div>
+
+    <script src='dinamicaCadProd.js'></script>
 </body>
 </html>

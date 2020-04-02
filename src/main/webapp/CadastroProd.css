@@ -2,8 +2,13 @@ body{
     width: 100%;
     margin:0;
     padding: 0;
-    font-family: 'Spartan', sans-serif;
     background-color: blueviolet;
+    font-family: 'Spartan', sans-serif;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
 }
 
 .menu{
@@ -12,8 +17,10 @@ body{
 }
 #PAGINAINTEIRA{
     width: 100%;
-    margin: 0 auto;
+    height: 100%;
+    display: flex;
 }
+
 .menu ul li{
     width: 50%;
     cursor: pointer;
@@ -27,22 +34,28 @@ body{
 width: 100%;
 }
 
-.blocoInfo{
-    width: 30%;
+#blocoCadastro{
+    width: 50%;
+    height: 100%;
     background-color: blueviolet;
-    padding: 10%;
+    padding:  5% 15% 15% 15%;
+    position: relative;
+    float: left;
+    clear: both;
+    border: solid;
+
 }
 
-.blocoInfo Div{
+#blocoCadastro Div{
     left: 50%;
 }
 
-.blocoInfo label{
+#blocoCadastro label{
     padding: 0 10px 0 0;
     font-size:large;
 }
 
-.blocoInfo input{
+#blocoCadastro input{
     width: 250px;
     height: 20px;
 }
@@ -81,6 +94,7 @@ width: 100%;
     overflow:auto;
     box-sizing: border-box;
     resize: none;
+    font-family: 'Spartan', sans-serif;
 }
 
 #Preco input::-webkit-inner-spin-button, 
@@ -89,4 +103,33 @@ width: 100%;
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
+}
+
+
+#blocoEntrada{
+    position:relative;
+    float: left;
+    clear: both;
+    width: 50%;
+    height: 100%;
+    border: solid;
+    padding: 5% 15% 15% 15%;
+}
+
+#blocoEntrada Div{
+    left: 50%;
+}
+
+#blocoEntrada label{
+    padding: 0 10px 0 0;
+    font-size:large;
+}
+
+#blocoEntrada input{
+    width: 250px;
+    height: 20px;
+}
+
+#CodigoEntrada label{
+    padding: 0 28px 0 0;
 }
