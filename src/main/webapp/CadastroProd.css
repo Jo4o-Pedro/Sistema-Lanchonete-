@@ -20,7 +20,9 @@ body{
     height: 100%;
     display: flex;
 }
-
+@media screen and (max-width: 1000px){
+    #PAGINAINTEIRA{display:blockblock;}
+}
 .menu ul li{
     width: 50%;
     cursor: pointer;
@@ -38,12 +40,10 @@ width: 100%;
     width: 50%;
     height: 100%;
     background-color: blueviolet;
-    padding:  5% 15% 15% 15%;
+    padding:  5% 15% 4% 15%;
     position: relative;
     float: left;
     clear: both;
-    border: solid;
-
 }
 
 #blocoCadastro Div{
@@ -112,8 +112,7 @@ width: 100%;
     clear: both;
     width: 50%;
     height: 100%;
-    border: solid;
-    padding: 5% 15% 15% 15%;
+    padding: 5% 15% 5% 15%;
 }
 
 #blocoEntrada Div{
