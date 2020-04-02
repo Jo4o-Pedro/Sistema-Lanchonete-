@@ -15,21 +15,28 @@ body{
     padding: 1%;
     list-style: none;
 }
+
 #PAGINAINTEIRA{
     width: 100%;
     height: 100%;
     display: flex;
 }
+
 @media screen and (max-width: 1000px){
-    #PAGINAINTEIRA{display:blockblock;}
+    #PAGINAINTEIRA{display:block;}
+    .linha{display:none;}
+    #blocoCadastro{border-bottom: solid;}
 }
+
 .menu ul li{
-    width: 50%;
     cursor: pointer;
     display: inline;
     padding: 10px;
     background-color: rgb(71, 26, 112);
     color: white;
+}
+.testeimg{
+    width: 60px;
 }
 
 .formCadastro{
@@ -131,4 +138,12 @@ width: 100%;
 
 #CodigoEntrada label{
     padding: 0 28px 0 0;
+}
+
+#quant-entrada input::-webkit-inner-spin-button, 
+#quant-entrada input::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
