@@ -1,0 +1,64 @@
+*{
+}
+body{
+    background-color: rgb(241, 85, 57);
+    font-family: 'Spartan', sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+header{
+    padding: 2%;
+    text-align: center;
+}
+
+.menufim{
+    background-color: beige;
+    border-radius: 50px;
+    padding: 5%;
+}
+
+.pedido{
+    padding: 2% 0;
+}
+
+.infolocalizacao input{
+    padding: px, 0, 0 , 0;
+}
+.botaofinal{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13;
+    width: 165px;
+    height: 35px;
+    background-color: #0066b8;
+    padding: 9px 50px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+.botaofinal:hover{
+    background-color: #175b92;
+    color:seashell;
+}
+.botaofinal:active {
+    box-shadow: inset 0 2px 5px #fff, 0 1px 3px #666;
+    top:2px
+    }
+
+.legenda{
+    border:solid;
+    height: 30%;
+}
+
+.menufim{
+    display:flex
+}
+
+.pedido{
+    float:left;
+    position: relative;
+}
+
+.infopessoais{
+    float: left;
+    position: relative;
+}
