@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import javax.script.*;
 
 @WebServlet("/cadastro/novoUsuario")
 public class CadastrarUsuario extends HttpServlet{
@@ -24,20 +25,32 @@ public class CadastrarUsuario extends HttpServlet{
 
             ClientesDao dao = new ClientesDao();
             Usuario user = new Usuario();
-
+            
             user.SetNome(nombre);
             user.SetEmail(email);
             user.SetTelefone(telefone);
             user.SetSenha(senha);
 
-            dao.Insert(user);
+            if(dao.ValidaExiste(email) == false){
+                System.out.println("JA EXISTE");
+                ScriptEngineManager factory = new ScriptEngineManager();
+                ScriptEngine engine = factory.getEngineByName("JavaScript");
+                engine.eval("document.getElementById('avisoEmail.style.display = \"block\";");
+                
+            } else{
+             dao.Insert(user);
             
-            request.setAttribute("usuario", user);
-            RequestDispatcher disp = request.getRequestDispatcher("computador.jsp");
-            disp.forward(request, response);
-         } catch (ClassNotFoundException ex) {
-            System.out.println("DEU ERRADO"+ ex);
+            }
+            
+           
+            //request.setAttribute("usuario", user);
+            //RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
+            //disp.forward(request, response);
+        } catch (ClassNotFoundException ex) {
+           System.out.println("DEU ERRADO"+ ex);
         } catch (SQLException ex) {
+            System.out.println("DEU ERRADO "+ ex);
+        }catch (ScriptException ex) {
             System.out.println("DEU ERRADO "+ ex);
         }
     }

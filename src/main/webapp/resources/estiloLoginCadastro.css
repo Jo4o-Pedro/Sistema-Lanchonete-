@@ -11,7 +11,7 @@ body{
     background-color: rgba(255, 255, 255, 0.342);
 }
 
-.menu a{
+.menu a, button{
     float: left;
     text-decoration: none;
     color: black;
@@ -99,4 +99,9 @@ body{
     to{
         transform: translateY(100vh);
     }
+}
+
+#EmailExistente{
+    color: red;
+    display: none;
 }

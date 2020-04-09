@@ -9,4 +9,13 @@ function onlynumber(evt) {
       theEvent.returnValue = false;
       if(theEvent.preventDefault) theEvent.preventDefault();
    }
+};
+
+
+function AdicionaCss(classeRecebendo){
+   
 }
+
+const btnAdicionaCss = document.getElementById('AdicionaCSS')
+const avisoEmail = document.getElementById('EmailExistente')
+btnAdicionaCss.addEventListener('click', () => avisoEmail.style.display = "block");

@@ -1,11 +1,16 @@
+<%@page import="models.Usuario" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset='utf-8'>
     <title>Pagina Principal</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='estiloaps.css'>
-    
+    <spring:url value="/resources/estiloaps.css" var="estiloaps" />
+    <link rel="stylesheet" type="text/css" href="${estiloaps}" />
+   
 </head>
 <body>
     <header class='menu'>
