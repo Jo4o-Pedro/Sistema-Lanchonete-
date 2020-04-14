@@ -18,9 +18,9 @@
             <nav id="menuinicial">
                 <ul class="btn">
                     <li><a class="btnmenu">login</a><br/></li>
-                    <li><a href="cadastro.jsp">cadastar</a><br/></li>
+                    <li><a href="<c:url value="cadastro" />" >cadastar</a><br></li>
                 </ul>
-            </nav></br>
+            </nav><br>
         </div> 
         <br>
         <br>

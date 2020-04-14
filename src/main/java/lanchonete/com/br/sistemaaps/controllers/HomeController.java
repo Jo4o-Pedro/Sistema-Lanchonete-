@@ -13,4 +13,9 @@ public class HomeController {
     public String index(){
         return "index"; 
     }
+
+    @RequestMapping("/cadastro")
+    public String Cadastro(){
+        return "cadastro"; 
+    }
 }

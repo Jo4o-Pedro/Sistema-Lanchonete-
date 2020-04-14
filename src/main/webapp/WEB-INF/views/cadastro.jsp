@@ -1,9 +1,12 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' type='text/css' media='screen' href='estiloLoginCadastro.css'>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estiloLoginCadastro.css" />" />
     <title>Cadastro</title>
 </head>
 <body>
@@ -32,7 +35,7 @@
                     <li><input type="tel" name="telefone"/></li>
                     <li><input type="submit" class="finalcadastro" name="cadastrar" value="Cadastrar"/></li>
                     <br>
-                    <h3 id='EmailExistente'>Esse Email já está cadastrado!</h3>
+                    <h3 id='EmailExistente'>Esse Email jÃ¡ estÃ¡ cadastrado!</h3>
                 </ul>   
             </div>
         </form>
