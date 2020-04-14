@@ -1,6 +1,6 @@
 <%@page import="models.Usuario" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,9 +8,8 @@
     <meta charset='utf-8'>
     <title>Pagina Principal</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <spring:url value="/resources/estiloaps.css" var="estiloaps" />
-    <link rel="stylesheet" type="text/css" href="${estiloaps}" />
-   
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estiloaps.css" />" />
+    
 </head>
 <body>
     <header class='menu'>
@@ -19,7 +18,7 @@
             <nav id="menuinicial">
                 <ul class="btn">
                     <li><a class="btnmenu">login</a><br/></li>
-                    <li><a href="cadastro.html">cadastar</a><br/></li>
+                    <li><a href="cadastro.jsp">cadastar</a><br/></li>
                 </ul>
             </nav></br>
         </div> 

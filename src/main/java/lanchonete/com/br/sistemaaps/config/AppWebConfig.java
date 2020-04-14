@@ -3,18 +3,19 @@ package lanchonete.com.br.sistemaaps.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.handler.AbstractHandlerMapping;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+@Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"lanchonete.com.br.sistemaaps.controllers"})
-public class AppWebConfig extends WebMvcConfigurationSupport {
-    
+@ComponentScan(basePackages = {"lanchonete.com.br.sistemaaps"})
+public class AppWebConfig extends WebMvcConfigurerAdapter  {
+
+//
     //Metodo que da acesso ao SpringMVC às paginas que estão com estão dentro de /WEB-INF/views/ e terminan com .jsp
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver(){
@@ -28,8 +29,8 @@ public class AppWebConfig extends WebMvcConfigurationSupport {
 
     // equivalents for <mvc:resources/> tags 
     @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/").setCachePeriod(31556926);
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
     // equivalent for <mvc:default-servlet-handler/> tag
@@ -37,5 +38,6 @@ public class AppWebConfig extends WebMvcConfigurationSupport {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+    
     
 }
