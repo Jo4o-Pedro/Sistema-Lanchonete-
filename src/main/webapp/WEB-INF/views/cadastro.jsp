@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
 <body>
     <header>
         <div class="menu">
-            <a href="index.jsp"><h2>Backdonalds</h2></a>
+            <a href="<c:url value="/" />" ><h2>Backdonalds</h2></a>
             <button id='AdicionaCSS'> TESTE </button>
         </div>
     </header>
@@ -20,26 +21,26 @@
         <h1 class='cabecalho'>Cadastro</h1>
     </div>
     <div class="paicadastro">
-        <form class="cadastrar" action="/Sistema-Lanchonete-/cadastro/novoUsuario" method="post">
+        <form:form class="cadastrar" modelAttribute="usuario" action="/Sistema-Lanchonete-/novoUsuario" method="post">
             <div class="dados">
                 <ul >
                     <li class='legenda'><h2>Nome</h2></li>
-                    <li><input type="text" name="nome"/></li>
+                    <li><form:input path="nome" type="text" name="nome"/></li>
                     <li class='legenda'><h2>E-mail</h2></li>
-                    <li><input type="email" name="email"/></li>
+                    <li><form:input path="email" type="email" name="email"/></li>
                     <li class='legenda'><h2>Senha</h2></li>
-                    <li><input type="password" name="senha"/></li>
+                    <li><form:input path="senha" type="password" name="senha"/></li>
                     <li class='legenda'><h2>Confirma Senha</h2></li>
                     <li><input type="password" name="confirma"/></li>
                     <li class='legenda'><h2>Telefone</h2></li>
-                    <li><input type="tel" name="telefone"/></li>
+                    <li><form:input path="telefone" type="tel" name="telefone"/></li>
                     <li><input type="submit" class="finalcadastro" name="cadastrar" value="Cadastrar"/></li>
                     <br>
                     <h3 id='EmailExistente'>Esse Email jÃ¡ estÃ¡ cadastrado!</h3>
                 </ul>   
             </div>
-        </form>
+        </form:form>
     </div>
-    <script src="cadastro.js"></script>
+    <script src=<c:url value="cadastro.js" /> > </script>
 </body>
 </html>

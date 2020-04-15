@@ -9,10 +9,10 @@ public class InsertUsuario {
     /**preenchendo os campos com os dados que devem ser inseridos  */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Usuario p = new Usuario();
-        p.SetNome("testefinal3");
-        p.SetEmail("testfinal3@gmail.com");
-        p.SetTelefone("9993");
-        p.SetSenha("final3");
+        p.setNome("testefinal3");
+        p.setEmail("testfinal3@gmail.com");
+        p.setTelefone("9993");
+        p.setSenha("final3");
         
         /**apos prencher o campo importamos insert do clientesDao e o execultamos*/
         ClientesDao dao = new ClientesDao();

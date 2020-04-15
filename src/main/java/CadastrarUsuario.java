@@ -26,10 +26,10 @@ public class CadastrarUsuario extends HttpServlet{
             ClientesDao dao = new ClientesDao();
             Usuario user = new Usuario();
             
-            user.SetNome(nombre);
-            user.SetEmail(email);
-            user.SetTelefone(telefone);
-            user.SetSenha(senha);
+            user.setNome(nombre);
+            user.setEmail(email);
+            user.setTelefone(telefone);
+            user.setSenha(senha);
 
             if(dao.ValidaExiste(email) == false){
                 System.out.println("JA EXISTE");

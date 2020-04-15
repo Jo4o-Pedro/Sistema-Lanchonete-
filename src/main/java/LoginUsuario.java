@@ -19,9 +19,9 @@ public class LoginUsuario extends HttpServlet{
 
         Usuario LogarUsuario = new Usuario();
 
-        LogarUsuario.SetEmail(email);
-        LogarUsuario.SetSenha(senha);
+        LogarUsuario.setEmail(email);
+        LogarUsuario.setSenha(senha);
 
-        System.out.println(LogarUsuario.GetEmail() + LogarUsuario.GetSenha());
+        System.out.println(LogarUsuario.getEmail() + LogarUsuario.getSenha());
     };
 }

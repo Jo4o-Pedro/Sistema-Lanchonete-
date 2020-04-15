@@ -32,10 +32,10 @@ public class ClientesDao {
 
         /**pegando os gets de pessoa q deverão der preenchidos */
         PreparedStatement stmt = this.conn.prepareStatement(sql);
-            stmt.setString(1, user.GetNome());
-            stmt.setString(2, user.GetEmail());
-            stmt.setString(3, user.GetTelefone());
-            stmt.setString(4, user.GetSenha());
+            stmt.setString(1, user.getNome());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getTelefone());
+            stmt.setString(4, user.getSenha());
             System.out.println("CHEGOU NO INSERT");
             stmt.executeUpdate();
 
@@ -78,4 +78,7 @@ public class ClientesDao {
         }
         return !isEmpty;
     }   
+
+
+    
 }
