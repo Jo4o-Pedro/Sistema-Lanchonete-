@@ -247,3 +247,71 @@ textarea:focus, input:focus, select:focus {
     list-style: none;
     display: inline;
 }
+.overlay {
+    height: 100vh; /* deixando o overlay 100% na vertical */
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.7);
+    opacity: 0; /*iniciando opacidade em 0 */
+    transition: opacity 1s;
+}
+
+/* estilizando o botão abrir menu */
+.menu-open{
+    position:fixed;
+    z-index:999;
+    left: 46%; 
+    bottom: 20px;
+    overflow:hidden;
+    border: 0;
+    padding:12px;
+    border-radius: 50%;
+    color:rgba(7, 3, 3, 0.966);
+    background-color: rgb(253, 249, 16);
+}
+
+/* estilizando o botão fechar menu */
+.menucar a.menu-close {
+ padding: 8px 0 4px 23px;
+ color: #6B6B6B;
+ display: block;
+ margin: -30px 0 -10px -20px;
+ font-size: 35px;
+ text-decoration: none;
+}
+
+/* estilizando o menu em si */
+.menucar {
+ overflow: hidden;
+ background: rgba(0,0,0,.95);
+ padding: 40px 0 0 40px;
+ position: fixed;
+ top: 0;
+ right: -290px; /*iniciando o menu com menos 290px para fora do browser*/
+ height: 100%;
+ z-index: 2;
+ transition: 0.5s;
+ width: 250px;
+}
+
+/* estilizando o menu + ul */
+.menucar ul{
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ overflow-y: auto;
+ width: 500px;
+ height: 95%;
+}
+
+/* estilizando o menu + ul li + a */
+.menucar ul li a {
+ display: block;
+ border-bottom: 1px solid #131313;
+ padding: 6px 4px 6px 4px;
+ color: #989898;
+ transition: 0.3s;
+ text-decoration: none;
+}

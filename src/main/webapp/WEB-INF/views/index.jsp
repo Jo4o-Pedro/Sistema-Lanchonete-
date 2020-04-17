@@ -74,7 +74,6 @@
             </c:forEach>
         </div>
 
-        <button class="carrinho">carrinho</button>
                 
 
     <footer>
@@ -86,21 +85,30 @@
         <div class="modal" id="modalDentro">
             <button class="fechar">x</button>
             <h3 class="legendaLogin"> LOGIN </h3>
-            <form action="/Sistema-Lanchonete-/loginUsuario" method="post">
-                <input type="text" name ="email" class="inputLogin" placeholder="E-mail"><br/>
-                <input type="password" name="senha" class="userkeyLogin" placeholder="Senha"/>
+            <form:form action="/Sistema-Lanchonete-/loginUsuario" method="post" >
+                <form:input type="text" name ="email" class="inputLogin" placeholder="E-mail"/><br/>
+                <form:input type="password" name="senha" class="userkeyLogin" placeholder="Senha"/>
                 <input type="submit" class="botaoLogin" value="LOGIN">
-            </form>
+            </form:form>
         </div>
     </div>
-    <div class="telaCarrinho">
-        <ul>
-            <li>Produto sdasdasdasd1</li>
-            <li>Produtoasdasdasd 2</li>
-            <li>Produto 3adsdasd</li>
-        </ul>
+    <a href="<c:url value="#" />" class="menu-open">Abrir Menu</a>
+
+    <div class="overlay"></div>
+
+    <div class="menucar">
+      <a href="<c:url value="#" />" class="menu-close">&times;</a>
+      <ul>
+        <li><a href="<c:url value="#" />" target="_blank">1x coca</a></li>
+        <li><a href="<c:url value="#" />"target="_blank">2x x-tudo</a></li>
+        <li><a href="<c:url value="#" />" target="_blank">1x x-frango</a></li>
+        <li><a href="<c:url value="#" />" target="_blank">500g fritas</a></li>
+        <a href="<c:url value="fimPedido" />">finalizar o pedido</a>
+      </ul>
     </div>
 
-    <script src=<c:url value="dinamismo.js" /> > </script>
+<script src="<c:url value='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' />" ></script>
+<script src="<c:url value='/resources/js/dinamismo.js' />" ></script>
+
 </body>
 </html>
