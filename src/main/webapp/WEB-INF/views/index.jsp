@@ -1,6 +1,6 @@
-<%@page import="models.Usuario" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estiloaps.css" />" />
     
 </head>
-<body>
+<body>    
     <header class='menu'>
         <div id='menurelativo'>
             <div id="logo"><strong>BACKDONALDS</strong></div>
@@ -28,129 +28,50 @@
     <div class="pagina">
         <div id="objPesquisa">
             <ul>
-                <li> <input type="button" id="Burger" value="Burgers"> </li>
-                <li> <input type="button" id="Frango" value="Frango"> </li>
-                <li> <input type="button" id="Pernil" value="Pernil"> </li>
-                <li> <input type="button" id="Bebidas" value="Bebidas"> </li>
-                <li> <input type="text" id="search" placeholder="Pesquisa..."> </li>
+                <li>
+                    <form:form action="/Sistema-Lanchonete-/burger" method="post">
+                        <input type="submit" id="Burger" value="Burgers">
+                    </form:form> 
+                </li>
+                <li>
+                    <form:form action="/Sistema-Lanchonete-/frango" method="post">
+                        <input type="submit" id="Frango" value="Frango">
+                    </form:form>
+                </li>
+                <li>
+                    <form:form action="/Sistema-Lanchonete-/porcao" method="post">
+                        <input type="submit" id="Porcao" value="Porções">
+                    </form:form>
+                </li>
+                <li>
+                    <form:form action="/Sistema-Lanchonete-/bebida" method="post">
+                        <input type="submit" id="Bebidas" value="Bebidas" /> 
+                    </form:form>
+                </li>
+                <li>
+                    <form:form action="/Sistema-Lanchonete-/filtro" modelAttribute="pesquisa" method="post">
+                        <form:input type="text" path="filtro" id="search" placeholder="Pesquisa..." onblur="clicaBtn()" />
+                        <input type="submit" class="esconde" id="BtnPesquisa"/>
+                    </form:form>
+                </li>
             </ul>
         </div>
         <div class="cardapio">
-            <div class="produto" id="xtudo">
-                <div class="tituloProduto">
-                    <div>X-tudo</div>
-                </div>
-                <div class="infosProduto">
-                    <div>
-                       INFORMAÇÔESMs ATUDOTUDOTUDOTUDOTUDOTUDO
-                       TUDOTUDOTUDOTUDOTUDOTUDOTUDOTUDOTUDOTU
-                       TUDOTUDOTUDOTUDOTUDOTUDOTUDOTUDOTUDO
-                       TUDOTUDOTUDOTUDO
-
+            <c:forEach items="${lista}" var="lista">
+                <div class="produto" id="xtudo">
+                    <div class="tituloProduto">
+                        <div>${lista.nome}</div>
+                    </div>
+                    <div class="infosProduto">
+                        <div>
+                           ${lista.descricao}
+                        </div>
+                    </div>
+                    <div class="finalCaixaLanche">
+                        <br>
                     </div>
                 </div>
-                <div class="finalCaixaLanche">
-                    <br>
-                </div>
-            </div>
-            <div class="produto" id="xbacon">
-                <div class="tituloProduto">
-                    <div>X-bacon</div>
-                </div>
-                <div class="infosProduto">
-                    <div>
-                       INFORBCAON BaconBaconBaconBaconBaconBaconBaconBaconBaconBaconBa
-                       BaconBaconBaconBaconBaconBaconBaconBaconBaconBaconBacon
-                       BaconBaconBaconBaconBaconBaconBaconBacon
-                       BaconBaconBaconBaconBacon
-
-                    </div>
-                </div>
-                <div class="finalCaixaLanche">
-                    <br>
-                </div>
-            </div>
-            <div class="produto" id="xsalada">
-                <div class="tituloProduto">
-                    <div>X-salada</div>
-                </div>
-                <div class="infosProduto">
-                    <div>
-                       INFORBCAON saladasaladasaladasaladasaladasaladasaladasalada
-                       saladasaladasaladasaladasaladasaladasaladasaladasaladasalada
-                       saladasaladasaladasaladasaladasaladasaladasaladasaladasalada
-
-                    </div>
-                </div>
-                <div class="finalCaixaLanche">
-                    <br>
-                </div>
-            </div>
-            <div class="produto" id="xfrango">
-                <div class="tituloProduto">
-                    <div>X-frango</div>
-                </div>
-                <div class="infosProduto">
-                    <div>
-                       INFORBCAON frangofrnago afnafrangoanffranfo
-                       frangofrnagornofaonfrnanfrangogranofrnfoa
-                       franfofrnaogrnfranfrnofaonfrnanfrangogranofrnfoa
-                       nadsnansdnasdnasndnasndnasdnnasdnasndnasdn
-                       nasnd
-                    </div>
-                </div>
-                <div class="finalCaixaLanche">
-                    <br>
-                </div>
-            </div>
-            <div class="produto" id="xpernil">
-                <div class="tituloProduto">
-                    <div>X-frango</div>
-                </div>
-                <div class="infosProduto">
-                    <div>
-                       INFORBCAON pernilpernilpernilpernilpernil
-                       pernilpernilpernilpernilpernilpernil
-                       pernilpernilpernilpernilpernilpernilpernil
-                       pernilpernilpernilpernilpernilpernilpernil
-
-                    </div>
-                </div>
-                <div class="finalCaixaLanche">
-                    <br>
-                </div>
-            </div>
-            <div class="produto" id="cocacola">
-                <div class="tituloProduto">
-                    <div>Coca-Cola</div>
-                </div>
-                <div class="infosProduto">
-                    <div>
-                        CocaCOlaCocaCOlaCocaCOlaCocaCOlaCocaCOla
-                        CocaCOlaCocaCOlaCocaCOlaCocaCOlaCocaCOla
-                        CocaCOlaCocaCOlaCocaCOlaCocaCOlaCocaCOlaCocaCOla
-                        CocaCOlaCocaCOlaCocaCOlaCocaCOlaCocaCOla
-                    </div>
-                </div>
-                <div class="finalCaixaLanche">
-                    <br>
-                </div>
-            </div>
-            <div class="produto" id="fanta">
-                <div class="tituloProduto">
-                    <div>Fanta</div>
-                </div>
-                <div class="infosProduto">
-                    <div>
-                        FanataFanataFanataFanataFanataFanataFanata
-                        FanataFanataFanataFanataFanataFanataFanataFanata
-                        FanataFanataFanataFanataFanataFanataFanataFanata
-                    </div>
-                </div>
-                <div class="finalCaixaLanche">
-                    <br>
-                </div>
-            </div>
+            </c:forEach>
         </div>
 
         <button class="carrinho">carrinho</button>
@@ -180,6 +101,6 @@
         </ul>
     </div>
 
-    <script src='dinamismo.js'></script>
+    <script src=<c:url value="dinamismo.js" /> > </script>
 </body>
 </html>

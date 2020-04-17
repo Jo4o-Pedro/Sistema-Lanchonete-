@@ -12,6 +12,11 @@ header{
     background-color: rgba(255, 255, 255, 0.959);
     
 }
+
+.esconde{
+    display: none;
+}
+
 #logo{
     position: relative;
     padding-top: 25px;
@@ -58,7 +63,7 @@ header{
     
 }
 
-#Burger, #Frango, #Pernil, #Bebidas{
+#Burger, #Frango, #Porcao, #Bebidas{
     color: red;
     background-color: #f8d5d1;
     border: 0;
@@ -69,7 +74,7 @@ header{
     cursor: pointer;
 }
 
-#Burger:hover, #Frango:hover, #Pernil:hover, #Bebidas:hover{
+#Burger:hover, #Frango:hover, #Porcao:hover, #Bebidas:hover{
     background-color: red;
     color: white;
 }
@@ -85,6 +90,17 @@ header{
     border-bottom: 2px solid yellow; 
     float: right;
     width: 30%;
+}
+
+#btnPesquisa{
+    background-color: rgb(246, 250, 6);
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+#btnPesquisa:hover{
+    background-color: rgb(209, 199, 56);
 }
 
 textarea:focus, input:focus, select:focus {

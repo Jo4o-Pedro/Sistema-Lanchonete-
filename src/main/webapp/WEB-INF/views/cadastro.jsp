@@ -13,8 +13,7 @@
 <body>
     <header>
         <div class="menu">
-            <a href="<c:url value="/" />" ><h2>Backdonalds</h2></a>
-            <button id='AdicionaCSS'> TESTE </button>
+            <a href="<c:url value="index" />" ><h2>Backdonalds</h2></a>
         </div>
     </header>
     <div>

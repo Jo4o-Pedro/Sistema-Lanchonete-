@@ -10,6 +10,11 @@ function iniciaModal(modalId){
   }
 }
 
+function clicaBtn(){
+  const btnPesquisa = document.getElementById('BtnPesquisa')
+  btnPesquisa.click()
+}
+
 const login = document.querySelector('.btnmenu')
 login.addEventListener('click', () => iniciaModal('modalID'));
 
@@ -20,3 +25,5 @@ login.addEventListener('click', () => iniciaModal('modalID'));
 
 //const carrinho = document.querySelector('.carrinho')
 //carrinho.addEventListener('click', () => MostraCarrinho('MostraCarrinho'));
+
+

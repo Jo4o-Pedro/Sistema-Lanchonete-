@@ -6,3 +6,12 @@ create table usuario(
 	telefone int,
 	constraint id_usuario primary key (id_usuario)
 );
+
+create table produto(
+id_produto serial not null,
+nome	varchar(20) not null,
+descricao	varchar(50) not null,
+categoria	varchar(20) not null ,
+preco	numeric (6,2) not null,
+informacao	varchar(50),
+constraint pk_produto Primary key (id_produto) );
