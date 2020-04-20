@@ -82,7 +82,17 @@
     </footer>
     
     </div>
-    
+    <div class="modalLogin" id="modalID">
+        <div class="modal" id="modalDentro">
+            <button class="fechar">x</button>
+            <h3 class="legendaLogin"> LOGIN </h3>
+            <form:form action="/Sistema-Lanchonete-/LoginUsuario" modelAttribute="loginUsuario" method="post" >
+                <form:input type="text" path="email" name ="email" class="inputLogin" placeholder="E-mail"/><br/>
+                <form:input type="password" path="senha" name="senha" class="userkeyLogin" placeholder="Senha"/>
+                <input type="submit" class="botaoLogin" value="LOGIN">
+            </form:form>
+        </div>
+    </div>
     <a href="<c:url value="#" />" class="menu-open">Abrir Menu</a>
 
     <div class="overlay"></div>

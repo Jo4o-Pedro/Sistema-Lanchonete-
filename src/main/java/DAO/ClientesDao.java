@@ -40,28 +40,22 @@ public class ClientesDao {
     };
 
 /**cria o SQL do select que sera enviado para o Banco */
-    public void Select(String user, String senha) throws SQLException{
-        String sql = "Select (Nome, Senha) FROM usuario WHERE EMAIL =" + user +  "AND senha =" + senha;
-        PreparedStatement stmt = this.conn.prepareStatement(sql);
 
-        System.out.println("CHEGOU NO SELECT!");
-        stmt.executeQuery(sql);
-    };
-
-    public boolean ValidaExiste(String email) throws SQLException{
+    public boolean ValidaExiste(Usuario user){
         boolean existe = false;
         try{
-            String sql = "select 1 from usuario where nome =" + email;
+            String sql = "select * from pessoa where email ='" + user.getEmail()+"' AND senha='"+ user.getSenha()+"'";
             PreparedStatement stmt = this.conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
             if (isFilled(rs)){
+                System.out.println("ENTROU AQUI NO IF");
                 existe = true;
             }
         } catch(SQLException e){
         e.printStackTrace();
         }
-
         return existe;
+
     }
 
     public static boolean isFilled(ResultSet rs){
@@ -75,7 +69,5 @@ public class ClientesDao {
         }
         return !isEmpty;
     }   
-
-
     
 }
