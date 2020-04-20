@@ -40,6 +40,18 @@ public class ProdutoDao {
 
             stmt.close();
     };
+
+    public void Delete(Produto produto) throws SQLException {
+        String sql = "Delete from produto where id = ?";
+
+        /**pegando os gets de pessoa q deverão der preenchidos */
+        PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, produto.getId());
+            System.out.println("CHEGOU NO delete");
+            stmt.executeUpdate();
+
+            stmt.close();
+    };
     
     public ArrayList<Produto> findAllProduto() throws SQLException{
        ArrayList<Produto> lista = new ArrayList<>();
@@ -144,6 +156,21 @@ public class ProdutoDao {
     return lista;
     }
     
-    
-    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

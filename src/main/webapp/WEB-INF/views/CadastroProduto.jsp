@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,16 +9,23 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Cadastrar Produto</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='CadastroProd.css'>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/CadastroProd.css" />" />
 </head>
 <body>
     <header>
+        <form:form class="formCadastro" action="/Sistema-Lanchonete-/cadastraProd" modelAttribute="produto">
         <div class="menu">
             <ul>
-                <li id="CadastraProduto">Cadastro Produto</li>
-                <li id="RecebeProduto">Recebimento Produto</li><br><br>
-                <li><img class="imagem" src="https://image.flaticon.com/icons/svg/711/711274.svg"/></li>
-                <li><img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/magnifier_icon-icons.com_48267.png"/></li>
+                <li id="CadastraProduto">Cadastro Ingrediente</li>
+                <li id="RecebeProduto">Manutenção Ingrediente</li><br><br>
+                <li>
+                    <input type="submit" name="acao" value="adc">
+                    <img class="imagem" src="https://image.flaticon.com/icons/svg/711/711274.svg"/>
+                </li>
+                <li>
+                    <input type="submit" name="acao" value="atualiza">
+                    <img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/magnifier_icon-icons.com_48267.png"/>
+                </li>
                 <li><img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/trash_icon-icons.com_48207.png"/></li>
                 <li><img class="imagem" src="https://cdn.discordapp.com/attachments/564604859245002756/695444807841087519/atualizar.png" alt="Atualizar"></li>
             </ul>
@@ -22,71 +33,40 @@
     </header>
     <div id = "PAGINAINTEIRA">
         <div id="blocoCadastro">
-            <form class="formCadastro">
-                <div id="CodigoProd">
-                    <label>Codigo do Produto</label><br>
-                    <input type="text"  tabindex="-1"/>  
-                </div><br>
-                <div id="NomeReduzido">
-                    <label>Nome Reduzido</label><br>
-                    <input type="text"  tabindex="-1"/>
-                </div><br>
-                <div id="DescricaoProd">
-                    <label>Descrição</label><br>
-                    <input type="text"  tabindex="-1"/>
-                </div><br>
-                <div id="CategoriaProd">
-                    <label>Categoria</label><br>
-                    <select id="ComboCategoria"  tabindex="-1">
-                        <option value="Bebida"> Bebida </option>
-                        <option value="Burger"> Burger </option>
-                        <option value="Frango"> Frango </option>
-                        <option value="Pernil"> Pernil </option>
-                    </select>
-                </div><br>
-                <div id="InfoProd">
-                    <label>Informações Produto</label><br>
-                    <textarea  tabindex="-1"></textarea>
-                </div>
-                <br>
-                <div id="Preco">
-                    <label>Preço</label><br>
-                    <input type="number"  tabindex="-1"/>
-                </div>
-                <br>
-            </form>
+            <div id="CodigoProd">
+                <label>Codigo do Ingrediente</label><br>
+                <form:input path="id" type="text"  tabindex="-1"/>  
+            </div><br>
+            <div id="NomeReduzido">
+                <label>Nome Reduzido</label><br>
+                <form:input path="nome" type="text"  tabindex="-1"/>
+            </div><br>
+            <div id="DescricaoProd">
+                <label>Descrição</label><br>
+                <form:input path="descricao" type="text"  tabindex="-1"/>
+            </div><br>
+            <div id="CategoriaProd">
+                <label>Categoria</label><br>
+                <form:select path="categoria" id="ComboCategoria"  tabindex="-1">
+                    <option value="Bebida"> Bebida </option>
+                    <option value="Burger"> Burger </option>
+                    <option value="Frango"> Frango </option>
+                    <option value="Pernil"> Pernil </option>
+                </form:select>
+            </div><br>
+            <div id="InfoProd">
+                <label>Informações Produto</label><br>
+                <form:textarea  path="informacao" tabindex="-1"></form:textarea>
+            </div>
+            <br>
+        </form:form>
         </div>
         <hr class='linha'>
-        <div id="blocoEntrada">
-            <form>
-                <div id="codigoentrada">
-                    <label>Codigo do produto</label><br>
-                    <input type="text"  tabindex="-1"/>  
-                </div><br>
-                <div id="quant-entrada">
-                    <label>Quantidade</label><br>
-                    <input type="number"  tabindex="-1" />
-                </div><br>
-                <div id="validade">
-                    <label>Validade do produto</label><br>
-                    <input type="data"  tabindex="-1"/>
-                </div><br>
-                <div id="InfoProd">
-                    <label>Observações</label><br>
-                    <textarea tabindex="-1"></textarea>
-                </div><br>
-                <div id="marcaentrada">
-                    <label>Marca</label><br>
-                    <input type="text"  tabindex="-1"/>
-                </div>
-                <br>
-            </form>
-        </div>
     </div>
     <footer class="rodape">
-        <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">João Tostes</a> from <a href="https://www.flaticon.com/br/" title="Vinicius Binué">www.binue.com</a></div>
+        <div>Icones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">João Tostes</a> from <a href="https://www.flaticon.com/br/" title="Vinicius Binue">www.binue.com</a></div>
     </footer>
 
-    <script src='dinamicaCadProd.js'></script>
+    <script src="<c:url value='/resources/js/dinamicaCadProd.js' />"></script>
 </body>
 </html>

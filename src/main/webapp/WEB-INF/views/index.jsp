@@ -19,6 +19,7 @@
                 <ul class="btn">
                     <li><a class="btnmenu">login</a><br/></li>
                     <li><a href="<c:url value="cadastro" />" >cadastar</a><br></li>
+                    <li><a href="<c:url value="cadprod" />" >pagina secreta</a><br></li>
                 </ul>
             </nav><br>
         </div> 
@@ -81,17 +82,7 @@
     </footer>
     
     </div>
-    <div class="modalLogin" id="modalID">
-        <div class="modal" id="modalDentro">
-            <button class="fechar">x</button>
-            <h3 class="legendaLogin"> LOGIN </h3>
-            <form:form action="/Sistema-Lanchonete-/loginUsuario" method="post" >
-                <form:input type="text" name ="email" class="inputLogin" placeholder="E-mail"/><br/>
-                <form:input type="password" name="senha" class="userkeyLogin" placeholder="Senha"/>
-                <input type="submit" class="botaoLogin" value="LOGIN">
-            </form:form>
-        </div>
-    </div>
+    
     <a href="<c:url value="#" />" class="menu-open">Abrir Menu</a>
 
     <div class="overlay"></div>

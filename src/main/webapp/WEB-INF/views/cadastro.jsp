@@ -40,6 +40,6 @@
             </div>
         </form:form>
     </div>
-    <script src=<c:url value="cadastro.js" /> > </script>
+    <script src=<c:url value="/resources/js/cadastro.js" /> > </script>
 </body>
 </html>

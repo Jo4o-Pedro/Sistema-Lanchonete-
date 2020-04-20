@@ -31,6 +31,23 @@ public class HomeController {
       return "index";
     }
     
+    @ModelAttribute("pesquisa")
+    public Filtro setFiltro() {
+        return new Filtro();
+    }
+    
+    @ModelAttribute("usuario")
+    public Usuario setCadastroUser() {
+        return new Usuario();
+    }    
+
+    @ModelAttribute("produto")
+        public Produto setCadastroProd() {
+            return new Produto();
+        }    
+
+    //Aqui estão os controllers para pesquisa de prodtuo
+    //
     @RequestMapping(value = "/burger", method = RequestMethod.POST)
     public String Burger(Model model) 
     throws ClassNotFoundException, SQLException {
@@ -67,33 +84,6 @@ public class HomeController {
       return "index";
     }
     
-    @RequestMapping("cadastro")
-    public String Cadastro(){
-        return "cadastro"; 
-    }
-
-
-    @ModelAttribute("usuario")
-    public Usuario setCadastroUser() {
-        return new Usuario();
-    }
-    
-    @ModelAttribute("pesquisa")
-    public Filtro setFiltro() {
-        return new Filtro();
-    }
-       
-    @RequestMapping(value = "/novoUsuario", method = RequestMethod.POST)
-    public String NovoUsu(@ModelAttribute("usuario")Usuario usuario, Model model ){
-        try {
-            ClientesDao daoUser = new ClientesDao();
-            daoUser.Insert(usuario);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return "cadastroSucesso";   
-    }
-    
     @RequestMapping(value = "/filtro", method = RequestMethod.POST)
     public String FiltrarProd(@ModelAttribute("pesquisa")Filtro filtro, Model model ){        
        
@@ -105,5 +95,53 @@ public class HomeController {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     return "index";   
+    }
+    //
+    //Fim dos controllers que pesquisam produto
+    
+    @RequestMapping("cadastro")
+    public String Cadastro(){
+        return "cadastro"; 
+    }
+
+    @RequestMapping("cadprod")
+    public String CadastroProduto(){
+        return "CadastroProduto"; 
+    }
+  
+    
+    @RequestMapping(value = "/novoUsuario", method = RequestMethod.POST)
+    public String NovoUsu(@ModelAttribute("usuario")Usuario usuario, Model model ){
+        try {
+            ClientesDao daoUser = new ClientesDao();
+            daoUser.Insert(usuario);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return "redirect:/index";   
+    }
+    
+    @RequestMapping(value = "cadastraProd", method = RequestMethod.POST)
+    public String NovoProd(@ModelAttribute("produto")Produto produto, Model model ){
+    try {
+            System.out.println("VEIIOOOOOO");
+            ProdutoDao daoProd = new ProdutoDao();
+            daoProd.Insert(produto);
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println("erro aqui" + ex);;
+        }
+    return "/cadastroSucesso";   
+    }
+    
+    @RequestMapping(value = "deletaProd", method = RequestMethod.POST)
+    public String DeletaProd(@ModelAttribute("produto")Produto produto, Model model ){
+    try {
+            System.out.println("VEIIOOOOOO");
+            ProdutoDao daoProd = new ProdutoDao();
+            daoProd.Insert(produto);
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println("erro aqui" + ex);;
+        }
+    return "/cadastroSucesso";   
     }
 }
