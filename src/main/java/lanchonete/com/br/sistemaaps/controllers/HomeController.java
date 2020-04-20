@@ -77,10 +77,13 @@ public class HomeController {
     public Usuario setCadastroUser() {
         return new Usuario();
     }
-    
     @ModelAttribute("pesquisa")
     public Filtro setFiltro() {
         return new Filtro();
+    }
+     @ModelAttribute("loginUsuario")
+    public Usuario setLogin() {
+        return new Usuario();
     }
        
     @RequestMapping(value = "/novoUsuario", method = RequestMethod.POST)
@@ -106,4 +109,23 @@ public class HomeController {
         }
     return "index";   
     }
+    @RequestMapping(value = "LoginUsuario", method = RequestMethod.POST)
+    public String ValidarUser(@ModelAttribute("loginUsuario")Usuario usuario, Model model){
+        try {
+            ClientesDao daoUser = new ClientesDao();
+            if(daoUser.ValidaExiste(usuario)){
+                System.out.println(">>>Sucesso NO IF!!!<<<");
+                return "/index";
+            } else {
+                System.out.println(">>>Fracasso NO IF!!!<<<");
+                return null;
+            }
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+    }
+
 }
