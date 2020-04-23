@@ -13,21 +13,27 @@
 </head>
 <body>
     <header>
-        <form:form class="formCadastro" action="/Sistema-Lanchonete-/cadastraProd" modelAttribute="produto">
+        <form:form class="formCadastro" action="/Sistema-Lanchonete-/CrudProd" modelAttribute="produto">
         <div class="menu">
             <ul>
                 <li id="CadastraProduto">Cadastro Ingrediente</li>
                 <li id="RecebeProduto">Manutenção Ingrediente</li><br><br>
                 <li>
-                    <input type="submit" name="acao" value="adc">
+                    <input type="submit" name="adiciona" value="adiciona">
                     <img class="imagem" src="https://image.flaticon.com/icons/svg/711/711274.svg"/>
                 </li>
                 <li>
-                    <input type="submit" name="acao" value="atualiza">
+                    <input type="submit" name="pesquisa" value="pesquisa">
                     <img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/magnifier_icon-icons.com_48267.png"/>
                 </li>
-                <li><img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/trash_icon-icons.com_48207.png"/></li>
-                <li><img class="imagem" src="https://cdn.discordapp.com/attachments/564604859245002756/695444807841087519/atualizar.png" alt="Atualizar"></li>
+                <li>
+                    <input type="submit" name="deleta" value="deleta">
+                    <img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/trash_icon-icons.com_48207.png"/>
+                </li>
+                <li>
+                    <input type="submit" name="atualiza" value="atualiza">
+                    <img class="imagem" src="https://cdn.discordapp.com/attachments/564604859245002756/695444807841087519/atualizar.png" alt="Atualizar">
+                </li>
             </ul>
         </div>
     </header>
@@ -39,7 +45,7 @@
             </div><br>
             <div id="NomeReduzido">
                 <label>Nome Reduzido</label><br>
-                <form:input path="nome" type="text"  tabindex="-1"/>
+                <form:input path="nome" type="text" tabindex="-1"/>
             </div><br>
             <div id="DescricaoProd">
                 <label>Descrição</label><br>

@@ -37,37 +37,6 @@ public class ClientesDao {
             stmt.executeUpdate();
 
             stmt.close();
-    };
-
-/**cria o SQL do select que sera enviado para o Banco */
-
-    public boolean ValidaExiste(Usuario user){
-        boolean existe = false;
-        try{
-            String sql = "select * from pessoa where email ='" + user.getEmail()+"' AND senha='"+ user.getSenha()+"'";
-            PreparedStatement stmt = this.conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            if (isFilled(rs)){
-                System.out.println("ENTROU AQUI NO IF");
-                existe = true;
-            }
-        } catch(SQLException e){
-        e.printStackTrace();
-        }
-        return existe;
-
-    }
-
-    public static boolean isFilled(ResultSet rs){
-        boolean isEmpty = true;
-        try {
-            while(rs.next()){
-                isEmpty = false;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return !isEmpty;
-    }   
+    };   
     
 }

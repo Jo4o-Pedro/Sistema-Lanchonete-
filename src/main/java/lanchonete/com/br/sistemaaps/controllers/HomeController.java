@@ -2,6 +2,7 @@ package lanchonete.com.br.sistemaaps.controllers;
 
 import DAO.ClientesDao;
 import DAO.ProdutoDao;
+import DAO.ValidacaoDao;
 import models.Usuario;
 import models.Filtro;
 import models.Produto;
@@ -108,11 +109,7 @@ public class HomeController {
     public String CadastroProduto(){
         return "CadastroProduto"; 
     }
-    
-    @ModelAttribute("pesquisa")
-    public Filtro setFiltro() {
-        return new Filtro();
-    }
+
      @ModelAttribute("loginUsuario")
     public Usuario setLogin() {
         return new Usuario();
@@ -128,35 +125,13 @@ public class HomeController {
         }
     return "redirect:/index";   
     }
-    
-    @RequestMapping(value = "cadastraProd", method = RequestMethod.POST)
-    public String NovoProd(@ModelAttribute("produto")Produto produto, Model model ){
-    try {
-            System.out.println("VEIIOOOOOO");
-            ProdutoDao daoProd = new ProdutoDao();
-            daoProd.Insert(produto);
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("erro aqui" + ex);;
-        }
-    return "/cadastroSucesso";   
-    }
-    
-    @RequestMapping(value = "deletaProd", method = RequestMethod.POST)
-    public String DeletaProd(@ModelAttribute("produto")Produto produto, Model model ){
-    try {
-            System.out.println("VEIIOOOOOO");
-            ProdutoDao daoProd = new ProdutoDao();
-            daoProd.Insert(produto);
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("erro aqui" + ex);;
-        }
-    return "/cadastroSucesso";   
-    }
+
     @RequestMapping(value = "LoginUsuario", method = RequestMethod.POST)
     public String ValidarUser(@ModelAttribute("loginUsuario")Usuario usuario, Model model){
         try {
-            ClientesDao daoUser = new ClientesDao();
-            if(daoUser.ValidaExiste(usuario)){
+            ValidacaoDao daoValida = new ValidacaoDao();
+            String filtroUsuario = "email ='" + usuario.getEmail()+"' AND senha='"+ usuario.getSenha()+"'";
+            if(daoValida.ValidaExiste("usuario", filtroUsuario)){
                 System.out.println(">>>Sucesso NO IF!!!<<<");
                 return "/index";
             } else {
@@ -170,5 +145,61 @@ public class HomeController {
         return null;
         
     }
+    //
+    //Controllers do CRUD de produto
+    @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "adiciona")
+    public String NovoProd(@ModelAttribute("produto")Produto produto, Model model ){
+    try {
+            System.out.println("VEIIOOOOOO cadastra");
+            ProdutoDao daoProd = new ProdutoDao();
+            daoProd.Insert(produto);
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println("erro aqui" + ex);
+        }
+    return "/cadastroSucesso";   
+    }
+    
+    @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "pesquisa")
+    public String SelectProd(@ModelAttribute("produto")Produto produto, Model model ){
+        System.out.println("VEIIOOOOOO no select ");
+        try {
+            ProdutoDao daoProd = new ProdutoDao();
+//            ArrayList<Produto> produtoBusca = daoProd.findProduto(produto);
+            Produto produtoBusca = new Produto();
+            produtoBusca = daoProd.findProduto(produto);
+            System.out.println(produto.getNome());
+            model.addAttribute("produto", produtoBusca);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    return "/CadastroProduto";   
+    }
 
+    @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "deleta")
+    public String DeletaProd(@ModelAttribute("produto")Produto produto, Model model ){
+    System.out.println("VEIIOOOOOO no delete ");
+    try {
+            ProdutoDao daoProd = new ProdutoDao();
+            daoProd.Delete(produto);
+            System.out.println(produto.getId());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "CadastroProduto";
+    }
+
+    @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "atualiza")
+    public String AtualizaProd(@ModelAttribute("produto")Produto produto, Model model ){
+    System.out.println("VEIIOOOOOO no atualiza ");
+    try {
+            ProdutoDao daoProd = new ProdutoDao();
+            daoProd.Update(produto);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "CadastroProduto";
+    }
+    //
+    //
 }

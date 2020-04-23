@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import models.Filtro;
-
 import models.Produto;
+import DAO.ValidacaoDao;
 import utilitarios.ConnectionFactory;
 
 public class ProdutoDao {
@@ -40,17 +40,43 @@ public class ProdutoDao {
 
             stmt.close();
     };
-
-    public void Delete(Produto produto) throws SQLException {
-        String sql = "Delete from produto where id = ?";
-
-        /**pegando os gets de pessoa q deverão der preenchidos */
-        PreparedStatement stmt = this.conn.prepareStatement(sql);
-            stmt.setInt(1, produto.getId());
-            System.out.println("CHEGOU NO delete");
-            stmt.executeUpdate();
-
-            stmt.close();
+    
+    public void Delete(Produto produto) throws SQLException, ClassNotFoundException {
+        String sql = "Delete from produto where id_produto = ?";
+        String filtroWhere = " id_produto =" +  produto.getId();
+        
+        ValidacaoDao validacao = new ValidacaoDao();
+        if(validacao.ValidaExiste("produto", filtroWhere)){
+            try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+                stmt.setLong(1, produto.getId());
+                System.out.println("CHEGOU NO delete");
+                stmt.executeUpdate();
+            }
+        }
+        else{
+            System.out.println("NAO ExISTE PRODUTO COM O CODIGO" + produto.getId());
+        }
+    };
+    
+    public void Update(Produto produto) throws SQLException, ClassNotFoundException {
+        String sql = "Update produto set nome = ?, descricao = ?, categoria = ?, preco = ?, informacao = ? where id_produto = ?";
+        String filtroWhere = "id_produto =" +  produto.getId();
+        ValidacaoDao validacao = new ValidacaoDao();
+        if(validacao.ValidaExiste("produto", filtroWhere)){
+            try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
+                stmt.setString(1, produto.getNome());
+                stmt.setString(2, produto.getDescricao());
+                stmt.setString(3, produto.getCategoria());
+                stmt.setFloat(4, produto.getPreco());
+                stmt.setString(5, produto.getInformacao());
+                stmt.setLong(6, produto.getId());
+                System.out.println("CHEGOU NO delete");
+                stmt.executeUpdate();
+            }
+        }
+        else{
+            System.out.println("ERRO NO PRODUTODAO.UPDATE -> NAO EXISTE O PRODUTO");
+        }
     };
     
     public ArrayList<Produto> findAllProduto() throws SQLException{
@@ -66,7 +92,7 @@ public class ProdutoDao {
        ResultSet rs = stmt.executeQuery();
        
        while(rs.next()){
-           int id = rs.getInt(1);
+           Long id = rs.getLong(1);
            String nome = rs.getString(2);
            String descricao = rs.getString(3);
            String categoria = rs.getString(4);  
@@ -101,7 +127,7 @@ public class ProdutoDao {
        ResultSet rs = stmt.executeQuery();
        
        while(rs.next()){
-           int id = rs.getInt(1);
+           Long id = rs.getLong(1);
            String nome = rs.getString(2);
            String descricao = rs.getString(3);
            categoria = rs.getString(4);  
@@ -135,7 +161,7 @@ public class ProdutoDao {
        ResultSet rs = stmt.executeQuery();
        
        while(rs.next()){
-           int id = rs.getInt(1);
+           Long id = rs.getLong(1);
            String nome = rs.getString(2);
            String descricao = rs.getString(3);
            String categoria = rs.getString(4);  
@@ -155,7 +181,36 @@ public class ProdutoDao {
        
     return lista;
     }
+//            ArrayList<Produto>
+    public Produto findProduto(Produto prod) throws SQLException, ClassNotFoundException{
+    ArrayList<Produto> produtoBuscado = new ArrayList<>();
+    String sql = "Select * from produto where id_produto = " + prod.getId();
+    String filtroID ="id_produto = " + prod.getId();
+    PreparedStatement stmt = this.conn.prepareCall(sql);
+    ValidacaoDao validacao = new ValidacaoDao();
     
+    ResultSet rs = stmt.executeQuery();
+    if(validacao.ValidaExiste("produto", filtroID)){
+        rs.next();
+        String nome = rs.getString(2);
+        String descricao = rs.getString(3);
+        String categoria = rs.getString(4);  
+        float preco = rs.getFloat(5);
+        String informacao = rs.getString(6);
+
+        prod.setCategoria(categoria);
+        prod.setDescricao(descricao);
+        prod.setInformacao(informacao);
+        prod.setNome(nome);
+        prod.setPreco(preco);
+
+        produtoBuscado.add(prod);
+    }
+    else{
+        System.out.println("DEU ERRO NO FindProduto");
+    }
+    return prod;
+    }
 }
 
 
