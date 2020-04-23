@@ -59,7 +59,7 @@
         </div>
         <div class="cardapio">
             <c:forEach items="${lista}" var="lista">
-                <div class="produto" id="xtudo">
+                <div class="produto">
                     <div class="tituloProduto">
                         <div>${lista.nome}</div>
                     </div>

@@ -16,23 +16,20 @@
         <form:form class="formCadastro" action="/Sistema-Lanchonete-/CrudProd" modelAttribute="produto">
         <div class="menu">
             <ul>
-                <li id="CadastraProduto">Cadastro Ingrediente</li>
-                <li id="RecebeProduto">Manutenção Ingrediente</li><br><br>
                 <li>
-                    <input type="submit" name="adiciona" value="adiciona">
-                    <img class="imagem" src="https://image.flaticon.com/icons/svg/711/711274.svg"/>
+                    <input type="image" class="imagem" name="adiciona" value="adiciona" alt="adiciona" src="https://image.flaticon.com/icons/svg/711/711274.svg"/>
                 </li>
                 <li>
-                    <input type="submit" name="pesquisa" value="pesquisa">
-                    <img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/magnifier_icon-icons.com_48267.png"/>
+                    <input type="image" class="imagem" name="pesquisa" value="pesquisa" alt="pesquisa" src="https://cdn.icon-icons.com/icons2/494/PNG/128/magnifier_icon-icons.com_48267.png"/>
                 </li>
                 <li>
-                    <input type="submit" name="deleta" value="deleta">
-                    <img class="imagem" src="https://cdn.icon-icons.com/icons2/494/PNG/128/trash_icon-icons.com_48207.png"/>
+                    <input type="image" class="imagem" name="deleta" value="deleta" alt="deleta" src="https://cdn.icon-icons.com/icons2/494/PNG/128/trash_icon-icons.com_48207.png"/>
                 </li>
                 <li>
-                    <input type="submit" name="atualiza" value="atualiza">
-                    <img class="imagem" src="https://cdn.discordapp.com/attachments/564604859245002756/695444807841087519/atualizar.png" alt="Atualizar">
+                    <input type="image" class="imagem" name="atualiza" value="atualiza" alt="atualiza" src="https://cdn.discordapp.com/attachments/564604859245002756/695444807841087519/atualizar.png">
+                </li>
+                <li>
+                    
                 </li>
             </ul>
         </div>
@@ -51,13 +48,17 @@
                 <label>Descrição</label><br>
                 <form:input path="descricao" type="text"  tabindex="-1"/>
             </div><br>
+            <div id="Preco">
+                    <label>Preço</label><br>
+                    <form:input type="number" path="preco" step="0.01" tabindex="-1"/>
+            </div><br>
             <div id="CategoriaProd">
                 <label>Categoria</label><br>
                 <form:select path="categoria" id="ComboCategoria"  tabindex="-1">
-                    <option value="Bebida"> Bebida </option>
-                    <option value="Burger"> Burger </option>
-                    <option value="Frango"> Frango </option>
-                    <option value="Pernil"> Pernil </option>
+                    <form:option value="BEBIDA"> Bebida </form:option>
+                    <form:option value="BURGER"> Burger </form:option>
+                    <form:option value="FRANGO"> Frango </form:option>
+                    <form:option value="PORCAO"> Porcao </form:option>
                 </form:select>
             </div><br>
             <div id="InfoProd">
@@ -67,7 +68,6 @@
             <br>
         </form:form>
         </div>
-        <hr class='linha'>
     </div>
     <footer class="rodape">
         <div>Icones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">João Tostes</a> from <a href="https://www.flaticon.com/br/" title="Vinicius Binue">www.binue.com</a></div>

@@ -156,7 +156,7 @@ public class HomeController {
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("erro aqui" + ex);
         }
-    return "/cadastroSucesso";   
+    return "redirect:cadprod";   
     }
     
     @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "pesquisa")
@@ -186,7 +186,7 @@ public class HomeController {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "CadastroProduto";
+        return "redirect:cadprod";
     }
 
     @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "atualiza")
@@ -198,7 +198,7 @@ public class HomeController {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "CadastroProduto";
+        return "redirect:cadprod";
     }
     //
     //
