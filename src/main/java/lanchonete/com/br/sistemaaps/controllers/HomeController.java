@@ -1,5 +1,6 @@
 package lanchonete.com.br.sistemaaps.controllers;
 
+import DAO.CarrinhoDao;
 import DAO.ClientesDao;
 import DAO.ProdutoDao;
 import DAO.ValidacaoDao;
@@ -11,12 +12,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Carrinho;
 
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class HomeController {
@@ -110,7 +113,7 @@ public class HomeController {
         return "CadastroProduto"; 
     }
 
-     @ModelAttribute("loginUsuario")
+    @ModelAttribute("loginUsuario")
     public Usuario setLogin() {
         return new Usuario();
     }
@@ -129,21 +132,34 @@ public class HomeController {
     @RequestMapping(value = "LoginUsuario", method = RequestMethod.POST)
     public String ValidarUser(@ModelAttribute("loginUsuario")Usuario usuario, Model model){
         try {
-            ValidacaoDao daoValida = new ValidacaoDao();
-            String filtroUsuario = "email ='" + usuario.getEmail()+"' AND senha='"+ usuario.getSenha()+"'";
-            if(daoValida.ValidaExiste("usuario", filtroUsuario)){
-                System.out.println(">>>Sucesso NO IF!!!<<<");
-                return "/index";
+            ValidacaoDao validacao = new ValidacaoDao();
+            String filtroUsuario = "email = '" + usuario.getEmail()+"' AND senha = '"+ usuario.getSenha() +"'";
+            if(validacao.ValidaExiste("usuario", filtroUsuario)){
+                System.out.println(">>>Sucesso NO IF login!!!<<<");
+
+                ClientesDao userDao = new ClientesDao();
+                ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
+                model.addAttribute("user", user);
+                Long id = user.get(0).getId();
+
+                ProdutoDao prodDao = new ProdutoDao();
+                ArrayList<Produto> lista = prodDao.findAllProduto();
+                model.addAttribute("lista", lista);
+                
+                CarrinhoDao carrinho = new CarrinhoDao();
+                ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
+                model.addAttribute("carrinho", listaCarrinho);
+
+                return "home";
             } else {
-                System.out.println(">>>Fracasso NO IF!!!<<<");
-                return null;
+                System.out.println(">>>Fracasso NO IF login!!!<<<");
+                return "redirect:index";
             }
             
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-        
     }
     //
     //Controllers do CRUD de produto

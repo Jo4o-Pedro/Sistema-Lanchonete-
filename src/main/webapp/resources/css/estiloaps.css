@@ -315,3 +315,25 @@ textarea:focus, input:focus, select:focus {
  transition: 0.3s;
  text-decoration: none;
 }
+
+.btn button{
+    color: black;
+    padding: 3px 10px;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom:3px solid yellow;
+    font-weight: bold;
+    margin-right: 25px;
+    border: none;
+}
+
+.btn button:hover{
+    color: black;
+    padding: 3px 10px;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom:3px solid yellow;
+    font-weight: bold;
+    margin-right: 25px;
+    border: none;
+}

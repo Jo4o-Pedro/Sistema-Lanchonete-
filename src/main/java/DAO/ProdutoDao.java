@@ -51,6 +51,7 @@ public class ProdutoDao {
                 stmt.setLong(1, produto.getId());
                 System.out.println("CHEGOU NO delete");
                 stmt.executeUpdate();
+                stmt.close();
             }
         }
         else{
@@ -72,6 +73,7 @@ public class ProdutoDao {
                 stmt.setLong(6, produto.getId());
                 System.out.println("CHEGOU NO delete");
                 stmt.executeUpdate();
+                stmt.close();
             }
         }
         else{
@@ -109,7 +111,7 @@ public class ProdutoDao {
            
            lista.add(prod);
        }
-       
+    stmt.close();   
     return lista;
     }
 
@@ -144,7 +146,7 @@ public class ProdutoDao {
            
            lista.add(prod);
        }
-       
+    stmt.close();   
     return lista;
     }
     
@@ -178,7 +180,7 @@ public class ProdutoDao {
            
            lista.add(prod);
        }
-       
+    stmt.close();   
     return lista;
     }
 //            ArrayList<Produto>
@@ -209,6 +211,7 @@ public class ProdutoDao {
     else{
         System.out.println("DEU ERRO NO FindProduto");
     }
+    stmt.close();
     return prod;
     }
 }
