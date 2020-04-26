@@ -28,29 +28,39 @@
         <div id="objPesquisa">
             <ul>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/burger" method="post">
-                        <input type="submit" id="Burger" value="Burgers">
+                    <form:form action="/Sistema-Lanchonete-/burger" modelAttribute="loginUsuario" method="post">
+                        <input type="submit" id="Burger" name="action" value="Burger">
+                        <form:input type="text" path="email" name ="email" class="esconde"/><br/>
+                        <form:input type="password" path="senha" name="senha" class="esconde"/>
                     </form:form> 
                 </li>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/frango" method="post">
-                        <input type="submit" id="Frango" value="Frango">
+                    <form:form action="/Sistema-Lanchonete-/frango" modelAttribute="loginUsuario" method="post">
+                        <input type="submit" id="Frango" name="action" value="Frango">
+                        <form:input type="text" path="email" name ="email" class="esconde"/><br/>
+                        <form:input type="password" path="senha" name="senha" class="esconde"/>
                     </form:form>
                 </li>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/porcao" method="post">
-                        <input type="submit" id="Porcao" value="Porções">
+                    <form:form action="/Sistema-Lanchonete-/porcao" modelAttribute="loginUsuario" method="post">
+                        <input type="submit" id="Porcao" name="action" value="Porcoes">
+                        <form:input type="text" path="email" name ="email" class="esconde"/><br/>
+                        <form:input type="password" path="senha" name="senha" class="esconde"/>
                     </form:form>
                 </li>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/bebida" method="post">
-                        <input type="submit" id="Bebidas" value="Bebidas" /> 
+                    <form:form action="/Sistema-Lanchonete-/bebida" modelAttribute="loginUsuario" method="post">
+                        <input type="submit" id="Bebidas" name="action" value="Bebidas" /> 
+                        <form:input type="text" path="email" name ="email" class="esconde"/><br/>
+                        <form:input type="password" path="senha" name="senha" class="esconde"/>
                     </form:form>
                 </li>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/filtro" modelAttribute="pesquisa" method="post">
+                    <form:form action="/Sistema-Lanchonete-/filtro" modelAttribute="loginUsuario" method="post">
                         <form:input type="text" path="filtro" id="search" placeholder="Pesquisa..." onblur="clicaBtn()" />
-                        <input type="submit" class="esconde" id="BtnPesquisa"/>
+                        <form:input type="text" path="email" name ="email" class="esconde"/><br/>
+                        <form:input type="password" path="senha" name="senha" class="esconde"/>
+                        <input type="submit" class="esconde" name="action" value="pesquisa" id="BtnPesquisa"/>
                     </form:form>
                 </li>
             </ul>

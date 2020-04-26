@@ -31,28 +31,28 @@
             <ul>
                 <li>
                     <form:form action="/Sistema-Lanchonete-/burger" method="post">
-                        <input type="submit" id="Burger" value="Burgers">
+                        <input type="submit" id="Burger" name="action" value="Burger ">
                     </form:form> 
                 </li>
                 <li>
                     <form:form action="/Sistema-Lanchonete-/frango" method="post">
-                        <input type="submit" id="Frango" value="Frango">
+                        <input type="submit" id="Frango" name="action" value="Frango ">
                     </form:form>
                 </li>
                 <li>
                     <form:form action="/Sistema-Lanchonete-/porcao" method="post">
-                        <input type="submit" id="Porcao" value="Porções">
+                        <input type="submit" id="Porcao" name="action" value="Porcoes ">
                     </form:form>
                 </li>
                 <li>
                     <form:form action="/Sistema-Lanchonete-/bebida" method="post">
-                        <input type="submit" id="Bebidas" value="Bebidas" /> 
+                        <input type="submit" id="Bebidas" name="action" value="Bebidas " /> 
                     </form:form>
                 </li>
                 <li>
                     <form:form action="/Sistema-Lanchonete-/filtro" modelAttribute="pesquisa" method="post">
                         <form:input type="text" path="filtro" id="search" placeholder="Pesquisa..." onblur="clicaBtn()" />
-                        <input type="submit" class="esconde" id="BtnPesquisa"/>
+                        <input type="submit" class="esconde" name="action" value="pesquisa " id="BtnPesquisa"/>
                     </form:form>
                 </li>
             </ul>
@@ -93,22 +93,7 @@
             </form:form>
         </div>
     </div>
-    <a href="<c:url value="#" />" class="menu-open">Abrir Menu</a>
 
-    <div class="overlay"></div>
-
-    <div class="menucar">
-      <a href="<c:url value="#" />" class="menu-close">&times;</a>
-      <ul>
-        <li><a href="<c:url value="#" />" target="_blank">1x coca</a></li>
-        <li><a href="<c:url value="#" />"target="_blank">2x x-tudo</a></li>
-        <li><a href="<c:url value="#" />" target="_blank">1x x-frango</a></li>
-        <li><a href="<c:url value="#" />" target="_blank">500g fritas</a></li>
-        <a href="<c:url value="fimPedido" />">finalizar o pedido</a>
-      </ul>
-    </div>
-
-<script src="<c:url value='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' />" ></script>
 <script src="<c:url value='/resources/js/dinamismo.js' />" ></script>
 
 </body>

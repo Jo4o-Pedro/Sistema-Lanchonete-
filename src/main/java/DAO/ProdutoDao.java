@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import models.Filtro;
 import models.Produto;
 import DAO.ValidacaoDao;
+import models.Usuario;
 import utilitarios.ConnectionFactory;
 
 public class ProdutoDao {
@@ -150,9 +151,9 @@ public class ProdutoDao {
     return lista;
     }
     
-    public ArrayList<Produto> findProdutoFiltro(Filtro filtroWhere) throws SQLException{
+    public ArrayList<Produto> findProdutoFiltro(Usuario filtroWhere) throws SQLException{
        ArrayList<Produto> lista = new ArrayList<>();
-       
+       System.out.println(filtroWhere.getFiltro());
        String sql = "Select * from produto where upper(nome) like upper('%" + filtroWhere.getFiltro() + "%')";
        
        PreparedStatement stmt = this.conn.prepareCall(sql);
@@ -161,7 +162,7 @@ public class ProdutoDao {
        //no banco, sendo que cada registro é salvo em um indice do array e o primeiro indice é o 
        //cabecalho (colunas) da tabela, por isso se usa .next para pular de indice
        ResultSet rs = stmt.executeQuery();
-       
+       System.out.println(rs);
        while(rs.next()){
            Long id = rs.getLong(1);
            String nome = rs.getString(2);

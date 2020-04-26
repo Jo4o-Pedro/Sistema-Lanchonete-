@@ -10,6 +10,7 @@ public class Usuario {
     private String email;
     private String telefone;
     private String senha;
+    private String filtro;
 
     public Long getId() {
         return id;
@@ -49,6 +50,14 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
     
 }

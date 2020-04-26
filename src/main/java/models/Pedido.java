@@ -1,4 +1,4 @@
-package DAO;
+package models;
 
 public class Pedido {
     private Long id;

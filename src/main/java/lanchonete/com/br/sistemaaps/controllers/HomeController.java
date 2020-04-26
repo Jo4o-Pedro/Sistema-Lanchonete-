@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -36,8 +37,8 @@ public class HomeController {
     }
     
     @ModelAttribute("pesquisa")
-    public Filtro setFiltro() {
-        return new Filtro();
+    public Usuario setFiltro() {
+        return new Usuario();
     }
     
     @ModelAttribute("usuario")
@@ -49,56 +50,178 @@ public class HomeController {
         public Produto setCadastroProd() {
             return new Produto();
         }    
-
+        
+    @ModelAttribute("loginUsuario")
+    public Usuario setLogin() {
+        return new Usuario();
+    }
+    
     //Aqui estão os controllers para pesquisa de prodtuo
     //
     @RequestMapping(value = "/burger", method = RequestMethod.POST)
-    public String Burger(Model model) 
+    public String Burger(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
-      ProdutoDao dao = new ProdutoDao();
-      ArrayList<Produto> lista = dao.findProdutoCategoria("burger");
-      model.addAttribute("lista", lista);
-      return "index";
+      String retorno = null;
+      if( action.equals("Burger ") ){
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("burger");
+        model.addAttribute("lista", lista);
+        retorno = "/index";
+      }
+      else if( action.equals("Burger") ){
+        //trecho usado para pegar o ID do usuario e usar para popular carrinho
+        ClientesDao userDao = new ClientesDao();
+        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
+        Long id = user.get(0).getId();
+        
+        //aqui popula o carrinho
+        CarrinhoDao carrinho = new CarrinhoDao();
+        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
+        model.addAttribute("carrinho", listaCarrinho);
+        
+        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("burger");
+        model.addAttribute("lista", lista);
+
+        model.addAttribute("user", user);
+
+        retorno = "home";
+      }
+        return retorno;
     }
 
     @RequestMapping(value = "/frango", method = RequestMethod.POST)
-    public String Frango(Model model) 
+    public String Frango(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
-      ProdutoDao dao = new ProdutoDao();
-      ArrayList<Produto> lista = dao.findProdutoCategoria("frango");
-      model.addAttribute("lista", lista);
-      return "index";
+      String retorno = null;
+      if( action.equals("Frango ") ){
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("frango");
+        model.addAttribute("lista", lista);
+        retorno = "/index";
+      }
+      else if( action.equals("Frango") ){
+        //trecho usado para pegar o ID do usuario e usar para popular carrinho
+        ClientesDao userDao = new ClientesDao();
+        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
+        Long id = user.get(0).getId();
+        
+        //aqui popula o carrinho
+        CarrinhoDao carrinho = new CarrinhoDao();
+        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
+        model.addAttribute("carrinho", listaCarrinho);
+        
+        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("frango");
+        model.addAttribute("lista", lista);
+
+        model.addAttribute("user", user);
+
+        retorno = "home";
+      }
+        return retorno;
     }
 
     @RequestMapping(value = "/porcao", method = RequestMethod.POST)
-    public String Porcao(Model model) 
+    public String Porcao(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
-      ProdutoDao dao = new ProdutoDao();
-      ArrayList<Produto> lista = dao.findProdutoCategoria("porcao");
-      model.addAttribute("lista", lista);
-      return "index";
+      String retorno = null;
+      if( action.equals("Porcoes ") ){
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("porcao");
+        model.addAttribute("lista", lista);
+        retorno = "/index";
+      }
+      else if( action.equals("Porcoes") ){
+        //trecho usado para pegar o ID do usuario e usar para popular carrinho
+        ClientesDao userDao = new ClientesDao();
+        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
+        Long id = user.get(0).getId();
+        
+        //aqui popula o carrinho
+        CarrinhoDao carrinho = new CarrinhoDao();
+        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
+        model.addAttribute("carrinho", listaCarrinho);
+        
+        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("porcao");
+        model.addAttribute("lista", lista);
+
+        model.addAttribute("user", user);
+
+        retorno = "home";
+      }
+        return retorno;
     }
 
     @RequestMapping(value = "/bebida", method = RequestMethod.POST)
-    public String Bebida(Model model) 
+    public String Bebida(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
-      ProdutoDao dao = new ProdutoDao();
-      ArrayList<Produto> lista = dao.findProdutoCategoria("bebida");
-      model.addAttribute("lista", lista);
-      return "index";
+      String retorno = null;
+      if( action.equals("Bebidas ") ){
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("bebida");
+        model.addAttribute("lista", lista);
+        retorno = "/index";
+      }
+      else if( action.equals("Bebidas") ){
+        //trecho usado para pegar o ID do usuario e usar para popular carrinho
+        ClientesDao userDao = new ClientesDao();
+        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
+        Long id = user.get(0).getId();
+        
+        //aqui popula o carrinho
+        CarrinhoDao carrinho = new CarrinhoDao();
+        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
+        model.addAttribute("carrinho", listaCarrinho);
+        
+        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoCategoria("bebida");
+        model.addAttribute("lista", lista);
+
+        model.addAttribute("user", user);
+
+        retorno = "home";
+      }
+        return retorno;
     }
     
     @RequestMapping(value = "/filtro", method = RequestMethod.POST)
-    public String FiltrarProd(@ModelAttribute("pesquisa")Filtro filtro, Model model ){        
-       
-        try {
-            ProdutoDao dao = new ProdutoDao();
-            ArrayList<Produto> lista = dao.findProdutoFiltro(filtro);;
-            model.addAttribute("lista", lista);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    return "index";   
+    public String FiltrarProd(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action )
+        throws ClassNotFoundException, SQLException{        
+      String retorno = null;
+      System.out.println(action);
+      if( action.equals("pesquisa ") ){
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoFiltro(usuario);
+        model.addAttribute("lista", lista);
+        retorno = "/index";
+      }
+      else if( action.equals("pesquisa") ){
+        //trecho usado para pegar o ID do usuario e usar para popular carrinho
+        ClientesDao userDao = new ClientesDao();
+        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
+        Long id = user.get(0).getId();
+        
+        //aqui popula o carrinho
+        CarrinhoDao carrinho = new CarrinhoDao();
+        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
+        model.addAttribute("carrinho", listaCarrinho);
+        
+        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        ProdutoDao dao = new ProdutoDao();
+        ArrayList<Produto> lista = dao.findProdutoFiltro(usuario);
+        model.addAttribute("lista", lista);
+
+        model.addAttribute("user", user);
+
+        retorno = "home";
+      }
+        return retorno;
     }
     //
     //Fim dos controllers que pesquisam produto
@@ -112,11 +235,6 @@ public class HomeController {
     public String CadastroProduto(){
         return "CadastroProduto"; 
     }
-
-    @ModelAttribute("loginUsuario")
-    public Usuario setLogin() {
-        return new Usuario();
-    }
        
     @RequestMapping(value = "/novoUsuario", method = RequestMethod.POST)
     public String NovoUsu(@ModelAttribute("usuario")Usuario usuario, Model model ){
@@ -129,7 +247,7 @@ public class HomeController {
     return "redirect:/index";   
     }
 
-    @RequestMapping(value = "LoginUsuario", method = RequestMethod.POST)
+    @RequestMapping(value = "LoginUsuario")
     public String ValidarUser(@ModelAttribute("loginUsuario")Usuario usuario, Model model){
         try {
             ValidacaoDao validacao = new ValidacaoDao();
