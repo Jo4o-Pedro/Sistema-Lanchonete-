@@ -2,6 +2,7 @@ package models;
 
 public class Carrinho {
     private Long id;
+    private Long id_usuario;
     private Long id_pedido;
     private Long id_produto;
     private int  quantidade;
@@ -47,4 +48,11 @@ public class Carrinho {
         this.quantidade = quantidade;
     }
     
+    public Long getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
 }

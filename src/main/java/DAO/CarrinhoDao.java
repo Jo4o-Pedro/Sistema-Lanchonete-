@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import models.Carrinho;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import models.Usuario;
 import utilitarios.ConnectionFactory;
 
 public class CarrinhoDao {
@@ -27,12 +29,13 @@ public class CarrinhoDao {
     public ArrayList<Carrinho> findCarrinho(Long id) throws SQLException{
         ArrayList<Carrinho> lista = new ArrayList<>();
        
-        String sql= "select a.id, a.id_pedido, a.id_produto, a.qntd, b.nome\n" +
+        String sql= "select max(a.id), max(a.id_pedido), max(a.id_produto), sum(a.qntd), max(b.nome)\n" +
                     "from carrinho a, produto b                            \n" +
                     "where a.id_produto = b.id_produto                     \n" +
                     "and a.id_pedido = (select id from pedido              \n" +
                     "			where id_usuario = '"+ id +"'      \n" +
-                    "			and status = 'A')";
+                    "			and status = 'A')                  \n" +
+                    "group by a.id_produto";
         
         PreparedStatement stmt = this.conn.prepareCall(sql);
        
@@ -57,5 +60,54 @@ public class CarrinhoDao {
     stmt.close();   
     return lista;
     }
-
+    
+    
+    public void insertcar(int quantidade,long id_produto,String usuario) throws SQLException{
+        int id_usuario = Integer.parseInt(usuario);
+        String sqls="Select a.id_pedido                       \n" +
+                    "from carrinho a, produto b                                    \n" +
+                    "where a.id_produto = b.id_produto                             \n" +
+                    "and a.id_pedido = (select id from pedido                      \n" +
+                    "			where id_usuario = "+id_usuario+"      \n" +
+                    "			and status = 'A')";
+        
+        PreparedStatement stmts = this.conn.prepareStatement(sqls, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        
+        
+        ResultSet rs1 = stmts.executeQuery();      
+        Long id_pedido = null;
+        if(ValidacaoDao.isFilled(rs1)){
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!AQUI!!!!!!!!!!!!!!!!!");
+            rs1.previous();
+            id_pedido = rs1.getLong(1);
+        }
+        else{
+            rs1.next();
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!AQUI2222!!!!!!!!!!!!!!!!!!!");
+            String sql = ("INSERT INTO pedido (id_usuario, dta_pedido, status) VALUES (?,current_date,'A')"); 
+            PreparedStatement stmt = this.conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, id_usuario);
+            
+            stmt.executeUpdate();
+            
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            id_pedido = rs.getLong(1);
+            
+            stmt.close();
+            
+        }
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!AQUI33333333!!!!!!!!!!!!!!!!!!!");
+        String sqlc = ("INSERT INTO carrinho (id_pedido, id_produto, qntd) VALUES (?, ?, ?)");
+        PreparedStatement stmc = this.conn.prepareStatement(sqlc);
+        stmc.setLong(1, id_pedido);
+        stmc.setLong(2, id_produto);
+        stmc.setInt(3, quantidade);
+        
+        stmc.executeUpdate();
+        
+        stmc.close();
+        
+        
+    }
 }

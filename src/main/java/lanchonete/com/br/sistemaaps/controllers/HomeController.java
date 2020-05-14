@@ -56,6 +56,11 @@ public class HomeController {
         return new Usuario();
     }
     
+    @ModelAttribute("carrinho")
+    public Carrinho setCar() {
+        return new Carrinho();
+    }
+    
     //Aqui estão os controllers para pesquisa de prodtuo
     //
     @RequestMapping(value = "/burger", method = RequestMethod.POST)
@@ -267,7 +272,7 @@ public class HomeController {
                 CarrinhoDao carrinho = new CarrinhoDao();
                 ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
                 model.addAttribute("carrinho", listaCarrinho);
-
+                
                 return "home";
             } else {
                 System.out.println(">>>Fracasso NO IF login!!!<<<");
@@ -334,6 +339,15 @@ public class HomeController {
         }
         return "redirect:cadprod";
     }
-    //
-    //
+    
+    @RequestMapping(value = "adiciona", method = RequestMethod.POST)            
+    public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, Model mode, @RequestParam String usernome, @RequestParam Long id_produto, @RequestParam int quantidade) {
+    try{
+            CarrinhoDao daocar = new CarrinhoDao();
+            daocar.insertcar(quantidade, id_produto, usernome);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -78,6 +78,14 @@
                     </div>
                     <div class="finalCaixaLanche">
                         <br>
+                        <form:form action="/Sistema-Lanchonete-/adiciona" method="POST">
+                            <c:forEach items="${user}" var="user">
+                               <input class="esconde" type="text" name="usernome" value="${user.id}"/>
+                            </c:forEach>
+                               <input class="esconde" type="text" name="id_produto" value="${lista.id}"/>
+                               <input type="number" class="add" name="quantidade" value="0" />
+                            <input type="submit" class="add" name="add_carinho" value="adicionar" />
+                        </form:form>
                     </div>
                 </div>
             </c:forEach>
@@ -94,9 +102,9 @@
         <div class="modal" id="modalDentro">
             <button class="fechar">x</button>
             <c:forEach items="${user}" var="user">
-            <h3 class="legendaLogin"> ${user.nome} </h3>
+            <h3 class="legendaLogin"> ${user.getNome()} </h3>
             </c:forEach>
-            <a> DESLOGAR </a>
+            <a href="index"> DESLOGAR </a>
         </div>
     </div>
     <a href="<c:url value="#" />" class="menu-open">Abrir Menu</a>
