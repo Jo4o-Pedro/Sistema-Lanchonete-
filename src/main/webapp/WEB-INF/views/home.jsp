@@ -80,10 +80,12 @@
                         <br>
                         <form:form action="/Sistema-Lanchonete-/adiciona" method="POST">
                             <c:forEach items="${user}" var="user">
-                               <input class="esconde" type="text" name="usernome" value="${user.id}"/>
+                               <input class="esconde" type="text" name="idUser" value="${user.id}"/>
+                               <input class="esconde" type="text" name="senha" value="${user.senha}"/>
+                               <input class="esconde" type="text" name="email" value="${user.email}"/>
                             </c:forEach>
                                <input class="esconde" type="text" name="id_produto" value="${lista.id}"/>
-                               <input type="number" class="add" name="quantidade" value="0" />
+                               <input class="quantidade" type="number" class="add" name="quantidade" value="0" />
                             <input type="submit" class="add" name="add_carinho" value="adicionar" />
                         </form:form>
                     </div>

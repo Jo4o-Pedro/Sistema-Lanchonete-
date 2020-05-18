@@ -289,7 +289,6 @@ public class HomeController {
     @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "adiciona")
     public String NovoProd(@ModelAttribute("produto")Produto produto, Model model ){
     try {
-            System.out.println("VEIIOOOOOO cadastra");
             ProdutoDao daoProd = new ProdutoDao();
             daoProd.Insert(produto);
         } catch (ClassNotFoundException | SQLException ex) {
@@ -300,7 +299,6 @@ public class HomeController {
     
     @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "pesquisa")
     public String SelectProd(@ModelAttribute("produto")Produto produto, Model model ){
-        System.out.println("VEIIOOOOOO no select ");
         try {
             ProdutoDao daoProd = new ProdutoDao();
 //            ArrayList<Produto> produtoBusca = daoProd.findProduto(produto);
@@ -317,7 +315,6 @@ public class HomeController {
 
     @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "deleta")
     public String DeletaProd(@ModelAttribute("produto")Produto produto, Model model ){
-    System.out.println("VEIIOOOOOO no delete ");
     try {
             ProdutoDao daoProd = new ProdutoDao();
             daoProd.Delete(produto);
@@ -330,7 +327,6 @@ public class HomeController {
 
     @RequestMapping(value = "CrudProd", method = RequestMethod.POST, params = "atualiza")
     public String AtualizaProd(@ModelAttribute("produto")Produto produto, Model model ){
-    System.out.println("VEIIOOOOOO no atualiza ");
     try {
             ProdutoDao daoProd = new ProdutoDao();
             daoProd.Update(produto);
@@ -341,13 +337,19 @@ public class HomeController {
     }
     
     @RequestMapping(value = "adiciona", method = RequestMethod.POST)            
-    public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, Model mode, @RequestParam String usernome, @RequestParam Long id_produto, @RequestParam int quantidade) {
+    public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, RedirectAttributes redirectAttributes, Model mode, @RequestParam String idUser, @RequestParam String senha, @RequestParam Long id_produto,@RequestParam String email, @RequestParam int quantidade) {
     try{
             CarrinhoDao daocar = new CarrinhoDao();
-            daocar.insertcar(quantidade, id_produto, usernome);
+            daocar.insertcar(quantidade, id_produto, idUser);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        Long idUsuario = Long.parseLong(idUser);
+        Usuario usuario = new Usuario();
+        usuario.setId(idUsuario);
+        usuario.setSenha(senha);
+        usuario.setEmail(email);
+        redirectAttributes.addFlashAttribute("loginUsuario", usuario);
+        return "redirect:LoginUsuario";
     }
 }
