@@ -3,7 +3,7 @@ create table usuario(
 	nome varchar(40) not null,
 	email varchar(30) not null,
 	senha varchar(30) not null,
-	telefone int,
+	telefone varchar(11),
 	constraint id_usuario primary key (id_usuario)
 );
 

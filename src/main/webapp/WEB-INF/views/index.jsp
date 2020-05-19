@@ -14,7 +14,7 @@
 <body>    
     <header class='menu'>
         <div id='menurelativo'>
-            <div id="logo"><strong>BACKDONALDS</strong></div>
+            <div id="logo"><strong>LocaDex</strong></div>
             <nav id="menuinicial">
                 <ul class="btn">
                     <li><a class="btnmenu">login</a><br/></li>
@@ -30,23 +30,23 @@
         <div id="objPesquisa">
             <ul>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/burger" method="post">
-                        <input type="submit" id="Burger" name="action" value="Burger ">
+                    <form:form action="/Sistema-Lanchonete-/acao" method="post">
+                        <input type="submit" id="Acao" name="action" value="Acao ">
                     </form:form> 
                 </li>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/frango" method="post">
-                        <input type="submit" id="Frango" name="action" value="Frango ">
+                    <form:form action="/Sistema-Lanchonete-/aventura" method="post">
+                        <input type="submit" id="Aventura" name="action" value="Aventura ">
                     </form:form>
                 </li>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/porcao" method="post">
-                        <input type="submit" id="Porcao" name="action" value="Porcoes ">
+                    <form:form action="/Sistema-Lanchonete-/comedia" method="post">
+                        <input type="submit" id="Comedia" name="action" value="Comedia ">
                     </form:form>
                 </li>
                 <li>
-                    <form:form action="/Sistema-Lanchonete-/bebida" method="post">
-                        <input type="submit" id="Bebidas" name="action" value="Bebidas " /> 
+                    <form:form action="/Sistema-Lanchonete-/terror" method="post">
+                        <input type="submit" id="Terror" name="action" value="Terror " /> 
                     </form:form>
                 </li>
                 <li>
