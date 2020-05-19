@@ -25,15 +25,16 @@ header{
     padding: px, 0, 0 , 0;
 }
 .botaofinal{
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13;
     width: 165px;
     height: 35px;
     background-color: #0066b8;
-    padding: 9px 50px;
     border: none;
     color: white;
     border-radius: 10px;
+
 }
 .botaofinal:hover{
     background-color: #175b92;
@@ -45,7 +46,6 @@ header{
     }
 
 .legenda{
-    border:solid;
     height: 30%;
 }
 

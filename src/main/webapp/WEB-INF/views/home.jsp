@@ -117,7 +117,7 @@
         <c:forEach items="${carrinho}" var="carrinho">
         <li><a href="<c:url value="#" />" target="_blank">${carrinho.quantidade}  ${carrinho.nome_prod}</a></li>
         </c:forEach>
-        <a href="<c:url value="fimPedido" />">finalizar o pedido</a>
+        <a href="<c:url value="/fimPedido" />">finalizar o pedido</a>
       </ul>
     </div>
 

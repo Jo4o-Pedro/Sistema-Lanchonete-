@@ -240,6 +240,11 @@ public class HomeController {
     public String CadastroProduto(){
         return "CadastroProduto"; 
     }
+    
+    @RequestMapping("fimPedido")
+    public String finalizarpedidos(){
+        return "fimPedido";
+    }
        
     @RequestMapping(value = "/novoUsuario", method = RequestMethod.POST)
     public String NovoUsu(@ModelAttribute("usuario")Usuario usuario, Model model ){
@@ -341,13 +346,12 @@ public class HomeController {
     }
     
     @RequestMapping(value = "adiciona", method = RequestMethod.POST)            
-    public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, Model mode, @RequestParam String usernome, @RequestParam Long id_produto, @RequestParam int quantidade) {
+    public void adicionar(@ModelAttribute("carrinho")Carrinho carrinho, Model mode, @RequestParam String usernome, @RequestParam Long id_produto, @RequestParam int quantidade) {
     try{
             CarrinhoDao daocar = new CarrinhoDao();
             daocar.insertcar(quantidade, id_produto, usernome);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
     }
 }

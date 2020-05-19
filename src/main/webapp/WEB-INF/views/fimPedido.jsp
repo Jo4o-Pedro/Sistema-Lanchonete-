@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type='text/css' media='screen' href="fimdacompra.css"/>
+    <link rel="stylesheet" type="text/css" href="fimdacompra.css" />
     <title>Finalizar a </title>
 </head>
 <body>
@@ -16,33 +16,38 @@
         <div class="menufim">
             <h2 class="legenda">Seu Pedido</h2>
             <div class="pedido">
-                <div class="produto">
-                    <h3>Nome do produto pedido</h3>
-                    <strong>descrição do pedido</strong>
-                </div>
-                <div class="pedido">
-                    <h3>Nome do produto pedido2</h3>
-                    <strong>descrição do pedido22222222222222222222</strong>
-                </div>
-                <div class="pedido">
-                    <h3>Nome do produto pedido3</h3>
-                    <strong>descrição do pedido33333333333333333333</strong><br/><br/>
-                </div>
+                <c:forEach items="${lista}" var="lista">
+                    <div class="produto">
+                        <div class="tituloProduto">
+                            <div>${lista.nome}</div>
+                        </div>
+                        <div class="infosProduto">
+                            <div>
+                            ${lista.descricao}
+                            </div>
+                        </div>
+                        <div class="infosProduto">
+                            <div>
+                            ${lista.preco}
+                            </div>
+                        </div>
+                        <div class="finalCaixaLanche">
+                            <br>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
             <hr>
             <div class="infopessoais">
                 <div class="infopagamento">
-                    <strong>finalizar com o cartão:666*</strong><br>
-                    <input type="submit" value="trocar cartão"><br/>
+                    <strong>Finalizar </strong><br>
+                    <label> Rua</label>
                     <input calss="dados"type="number"/>
-                </div>
-                <div class="infolocalizacao">
-                    <h3>localização atual:aqui mesmo </h3>
-                    <input type="button" value="trocar Localização"><br/>
-                    <input type="text">
+                    <label> Numero</label>
+                    <input type="number"><br> <br>
                 </div>
              
-                <input class="botaofinal" type="button" value="concluir">
+                <input class="botaofinal" type="button" value="Finalizar Compra">
             </div>
         </div>
     </div>
