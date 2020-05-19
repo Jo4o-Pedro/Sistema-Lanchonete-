@@ -341,12 +341,8 @@ public class HomeController {
         return "redirect:cadprod";
     }
     
-    @RequestMapping(value = "adiciona", method = RequestMethod.POST)            
-<<<<<<< HEAD
-    public void adicionar(@ModelAttribute("carrinho")Carrinho carrinho, Model mode, @RequestParam String usernome, @RequestParam Long id_produto, @RequestParam int quantidade) {
-=======
+    @RequestMapping(value = "adiciona", method = RequestMethod.POST)
     public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, RedirectAttributes redirectAttributes, Model mode, @RequestParam String idUser, @RequestParam String senha, @RequestParam Long id_produto,@RequestParam String email, @RequestParam int quantidade) {
->>>>>>> 27fc133969931e98c2095516cb503535b4aa4a23
     try{
             CarrinhoDao daocar = new CarrinhoDao();
             daocar.insertcar(quantidade, id_produto, idUser);
