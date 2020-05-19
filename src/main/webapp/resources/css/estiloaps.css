@@ -59,22 +59,22 @@ header{
 }
 
 #objPesquisa ul li{
-    display:inline;
-    
+    display:inline-block;
 }
 
-#Burger, #Frango, #Porcao, #Bebidas{
+#Acao, #Aventura, #Terror, #Comedia{
     color: red;
     background-color: #f8d5d1;
     border: 0;
     padding: 1%;
     font-weight: bold;
     border-radius: 5px;
-    width: 15%;
+    width: 150px;
+    height:50px;
     cursor: pointer;
 }
 
-#Burger:hover, #Frango:hover, #Porcao:hover, #Bebidas:hover{
+#Acao:hover, #Aventura:hover, #Terror:hover, #Comedia:hover{
     background-color: red;
     color: white;
 }
@@ -84,12 +84,12 @@ header{
 #search{
     background-color:rgba(255, 255, 255, 0.171) ;
     padding:1%;
-    margin: 0px;
+    margin: 0 180px;
     box-shadow: none;
     border: 0px ;
     border-bottom: 2px solid yellow; 
     float: right;
-    width: 30%;
+    width: 300px;
 }
 
 #btnPesquisa{
@@ -258,7 +258,7 @@ textarea:focus, input:focus, select:focus {
     transition: opacity 1s;
 }
 
-/* estilizando o botão abrir menu */
+/* estilizando o botÃ£o abrir menu */
 .menu-open{
     position:fixed;
     z-index:999;
@@ -272,7 +272,7 @@ textarea:focus, input:focus, select:focus {
     background-color: rgb(253, 249, 16);
 }
 
-/* estilizando o botão fechar menu */
+/* estilizando o botÃ£o fechar menu */
 .menucar a.menu-close {
  padding: 8px 0 4px 23px;
  color: #6B6B6B;
@@ -336,4 +336,20 @@ textarea:focus, input:focus, select:focus {
     font-weight: bold;
     margin-right: 25px;
     border: none;
+}
+
+.add{
+    background-color:yellow;
+    border: none;
+    border-radius:5px;
+    padding:3px 3px 2px 3px;
+    margin:4px;
+}
+
+.quantidade{
+    width:40px;
+    margin:4px 4px 4px 10px;
+    border:none;
+    padding:2px;
+    border-radius: 1px;
 }
