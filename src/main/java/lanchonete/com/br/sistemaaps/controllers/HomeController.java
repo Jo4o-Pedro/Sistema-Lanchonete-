@@ -343,7 +343,6 @@ public class HomeController {
     
     @RequestMapping(value = "adiciona", method = RequestMethod.POST)
     public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, RedirectAttributes redirectAttributes, Model mode, @RequestParam String idUser, @RequestParam String senha, @RequestParam Long id_produto,@RequestParam String email, @RequestParam int quantidade) {
-
     try{
             CarrinhoDao daocar = new CarrinhoDao();
             daocar.insertcar(quantidade, id_produto, idUser);
