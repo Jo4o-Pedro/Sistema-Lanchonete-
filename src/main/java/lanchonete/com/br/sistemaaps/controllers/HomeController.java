@@ -63,17 +63,17 @@ public class HomeController {
     
     //Aqui estão os controllers para pesquisa de prodtuo
     //
-    @RequestMapping(value = "/burger", method = RequestMethod.POST)
-    public String Burger(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
+    @RequestMapping(value = "/acao", method = RequestMethod.POST)
+    public String Acao(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
       String retorno = null;
-      if( action.equals("Burger ") ){
+      if( action.equals("Acao ") ){
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("burger");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("acao");
         model.addAttribute("lista", lista);
         retorno = "/index";
       }
-      else if( action.equals("Burger") ){
+      else if( action.equals("Acao") ){
         //trecho usado para pegar o ID do usuario e usar para popular carrinho
         ClientesDao userDao = new ClientesDao();
         ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
@@ -84,9 +84,9 @@ public class HomeController {
         ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
         model.addAttribute("carrinho", listaCarrinho);
         
-        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        //aqui popula a pagina com os produtos(NO caso com categoria Acao)
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("burger");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("acao");
         model.addAttribute("lista", lista);
 
         model.addAttribute("user", user);
@@ -96,17 +96,17 @@ public class HomeController {
         return retorno;
     }
 
-    @RequestMapping(value = "/frango", method = RequestMethod.POST)
-    public String Frango(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
+    @RequestMapping(value = "/aventura", method = RequestMethod.POST)
+    public String Aventura(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
       String retorno = null;
-      if( action.equals("Frango ") ){
+      if( action.equals("Aventura ") ){
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("frango");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("aventura");
         model.addAttribute("lista", lista);
         retorno = "/index";
       }
-      else if( action.equals("Frango") ){
+      else if( action.equals("Aventura") ){
         //trecho usado para pegar o ID do usuario e usar para popular carrinho
         ClientesDao userDao = new ClientesDao();
         ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
@@ -117,9 +117,9 @@ public class HomeController {
         ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
         model.addAttribute("carrinho", listaCarrinho);
         
-        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        //aqui popula a pagina com os produtos(NO caso com categoria Aventura)
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("frango");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("aventura");
         model.addAttribute("lista", lista);
 
         model.addAttribute("user", user);
@@ -129,17 +129,17 @@ public class HomeController {
         return retorno;
     }
 
-    @RequestMapping(value = "/porcao", method = RequestMethod.POST)
-    public String Porcao(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
+    @RequestMapping(value = "/comedia", method = RequestMethod.POST)
+    public String Comedia(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
       String retorno = null;
-      if( action.equals("Porcoes ") ){
+      if( action.equals("Comedia ") ){
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("porcao");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("comedia");
         model.addAttribute("lista", lista);
         retorno = "/index";
       }
-      else if( action.equals("Porcoes") ){
+      else if( action.equals("Comedia") ){
         //trecho usado para pegar o ID do usuario e usar para popular carrinho
         ClientesDao userDao = new ClientesDao();
         ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
@@ -150,9 +150,9 @@ public class HomeController {
         ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
         model.addAttribute("carrinho", listaCarrinho);
         
-        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        //aqui popula a pagina com os produtos(NO caso com categoria Comedia)
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("porcao");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("comedia");
         model.addAttribute("lista", lista);
 
         model.addAttribute("user", user);
@@ -162,17 +162,17 @@ public class HomeController {
         return retorno;
     }
 
-    @RequestMapping(value = "/bebida", method = RequestMethod.POST)
-    public String Bebida(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
+    @RequestMapping(value = "/terror", method = RequestMethod.POST)
+    public String Terror(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
     throws ClassNotFoundException, SQLException {
       String retorno = null;
-      if( action.equals("Bebidas ") ){
+      if( action.equals("Terror ") ){
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("bebida");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("terror");
         model.addAttribute("lista", lista);
         retorno = "/index";
       }
-      else if( action.equals("Bebidas") ){
+      else if( action.equals("Terror") ){
         //trecho usado para pegar o ID do usuario e usar para popular carrinho
         ClientesDao userDao = new ClientesDao();
         ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
@@ -183,9 +183,9 @@ public class HomeController {
         ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
         model.addAttribute("carrinho", listaCarrinho);
         
-        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
+        //aqui popula a pagina com os produtos(NO caso com categoria Terror)
         ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("bebida");
+        ArrayList<Produto> lista = dao.findProdutoCategoria("terror");
         model.addAttribute("lista", lista);
 
         model.addAttribute("user", user);

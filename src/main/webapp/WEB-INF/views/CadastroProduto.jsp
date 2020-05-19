@@ -55,10 +55,10 @@
             <div id="CategoriaProd">
                 <label>Categoria</label><br>
                 <form:select path="categoria" id="ComboCategoria"  tabindex="-1">
-                    <form:option value="BEBIDA"> Bebida </form:option>
-                    <form:option value="BURGER"> Burger </form:option>
-                    <form:option value="FRANGO"> Frango </form:option>
-                    <form:option value="PORCAO"> Porcao </form:option>
+                    <form:option value="ACAO"> Ação </form:option>
+                    <form:option value="AVENTURA"> Aventura </form:option>
+                    <form:option value="TERROR"> Terror </form:option>
+                    <form:option value="COMEDIA"> Comédia </form:option>
                 </form:select>
             </div><br>
             <div id="InfoProd">

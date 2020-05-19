@@ -62,7 +62,7 @@ header{
     display:inline-block;
 }
 
-#Burger, #Frango, #Porcao, #Bebidas{
+#Acao, #Aventura, #Comedia, #Terror{
     color: red;
     background-color: #f8d5d1;
     border: 0;
@@ -74,7 +74,7 @@ header{
     cursor: pointer;
 }
 
-#Burger:hover, #Frango:hover, #Porcao:hover, #Bebidas:hover{
+#Acao:hover, #Aventura:hover, #Comedia:hover, #Terror:hover{
     background-color: red;
     color: white;
 }
