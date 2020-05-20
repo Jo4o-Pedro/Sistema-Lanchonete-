@@ -8,6 +8,7 @@ import models.Carrinho;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import models.Produto;
 import models.Usuario;
 import utilitarios.ConnectionFactory;
 
@@ -107,7 +108,38 @@ public class CarrinhoDao {
         stmc.executeUpdate();
         
         stmc.close();
-        
-        
+    }
+
+    public ArrayList<Produto> findProdutoCarrinho(String idUsuario) throws SQLException{
+        ArrayList<Produto> lista = new ArrayList<>();
+        String sql= "select distinct(x.nome), preco         \n" +
+                    "from produto x, carrinho y, pedido z   \n" +
+                    "where x.id_produto = y.id_produto      \n" +
+                    "and   y.id_pedido = z.id               \n" +
+                    "and   y.status = 'A'                   \n" +
+                    "and   z.id_usuario = " + idUsuario;
+     
+        PreparedStatement stmt = this.conn.prepareCall(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        while(rs.next()){
+           String nome = rs.getString(1);
+           float preco = rs.getFloat(2);
+           
+           Produto produtos = new Produto();
+           produtos.setNome(nome);
+           produtos.setPreco(preco);
+           System.out.println("CARRINHO !!!");
+           lista.add(produtos);
+       }
+    stmt.close();   
+    return lista;
+    }
+    
+    public void desativaPedido(String idUsuario) throws SQLException{
+        String sql = "Update pedido set status = 'I' where id_usuario = "+ idUsuario;
+        PreparedStatement stmt = this.conn.prepareStatement(sql);
+        stmt.executeUpdate();
+        stmt.close();
     }
 }

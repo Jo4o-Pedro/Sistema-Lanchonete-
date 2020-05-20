@@ -242,8 +242,18 @@ public class HomeController {
     }
     
     @RequestMapping("fimPedido")
-    public String finalizarpedidos(){
+    public String finalizarpedidos(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String id_user){
+    try{
+        CarrinhoDao car = new CarrinhoDao();
+        ArrayList<Produto> prods = car.findProdutoCarrinho(id_user);
+        car.desativaPedido(id_user);
+        model.addAttribute("prods", prods);
+
         return "fimPedido";
+    }catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return "fimPedido";
     }
        
     @RequestMapping(value = "/novoUsuario", method = RequestMethod.POST)

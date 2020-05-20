@@ -116,10 +116,15 @@
     <div class="menucar">
       <a href="<c:url value="#" />" class="menu-close">&times;</a>
       <ul>
-        <c:forEach items="${carrinho}" var="carrinho">
-        <li><a href="<c:url value="#" />" target="_blank">${carrinho.quantidade}  ${carrinho.nome_prod}</a></li>
-        </c:forEach>
-        <a href="<c:url value="/fimPedido" />">finalizar o pedido</a>
+        <form:form action="/Sistema-Lanchonete-/fimPedido" method="POST">
+            <c:forEach items="${carrinho}" var="carrinho">
+                <li><a href="<c:url value="#" />" target="_blank">${carrinho.quantidade}  ${carrinho.nome_prod}</a></li>
+            </c:forEach>
+            <c:forEach items="${user}" var="user">
+                <input class="esconde" type="text" name="id_user" value="${user.id}"/>
+            </c:forEach>
+            <input type="submit" name="add_carinho" value="adicionar" />
+        </form:form>
       </ul>
     </div>
 
