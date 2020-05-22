@@ -18,7 +18,7 @@
     <br>
     <div id="AllPage">
         <div class="menufim">
-            <h2 class="legenda">Seu Pedido</h2>
+            <h2 class="legenda">Seu Pedido:</h2>
             <div class="pedido">
                 <c:forEach items="${prods}" var="prods">
                     <div class="produto">
@@ -26,7 +26,7 @@
                             <div>${prods.nome}</div>
                         </div>
                         <div class="infosProduto">
-                            <div>${prods.preco}</div>
+                            <div>R$ ${prods.preco}</div>
                         </div>
                         <div class="finalCaixaLanche">
                             <br>

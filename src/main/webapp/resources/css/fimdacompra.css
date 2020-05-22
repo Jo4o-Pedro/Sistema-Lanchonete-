@@ -47,6 +47,7 @@ header{
 
 .legenda{
     height: 30%;
+    margin: 3%;
 }
 
 .menufim{
@@ -61,4 +62,8 @@ header{
 .infopessoais{
     float: left;
     position: relative;
+}
+
+.produto{
+    
 }

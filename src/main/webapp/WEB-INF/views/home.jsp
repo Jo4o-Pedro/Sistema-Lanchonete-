@@ -85,7 +85,7 @@
                                <input class="esconde" type="text" name="email" value="${user.email}"/>
                             </c:forEach>
                                <input class="esconde" type="text" name="id_produto" value="${lista.id}"/>
-                               <input class="quantidade" type="number" class="add" name="quantidade" value="0" />
+                               <input type="number" class="esconde" name="quantidade" value="1" />
                             <input type="submit" class="add" name="add_carinho" value="adicionar" />
                         </form:form>
                     </div>
@@ -106,10 +106,10 @@
             <c:forEach items="${user}" var="user">
             <h3 class="legendaLogin"> ${user.getNome()} </h3>
             </c:forEach>
-            <a href="index"> DESLOGAR </a>
+            <a class="deslogar" href="index"> DESLOGAR </a>
         </div>
     </div>
-    <a href="<c:url value="#" />" class="menu-open">Abrir Menu</a>
+    <a href="<c:url value="#" />" class="menu-open">Abrir Carrinho</a>
 
     <div class="overlay"></div>
 
@@ -118,7 +118,7 @@
       <ul>
         <form:form action="/Sistema-Lanchonete-/fimPedido" method="POST">
             <c:forEach items="${carrinho}" var="carrinho">
-                <li><a href="<c:url value="#" />" target="_blank">${carrinho.quantidade}  ${carrinho.nome_prod}</a></li>
+                <li><a href="<c:url value="#" />" target="_blank">${carrinho.nome_prod}</a></li>
             </c:forEach>
             <c:forEach items="${user}" var="user">
                 <input class="esconde" type="text" name="id_user" value="${user.id}"/>

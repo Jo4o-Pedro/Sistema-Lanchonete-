@@ -116,7 +116,7 @@ public class CarrinhoDao {
                     "from produto x, carrinho y, pedido z   \n" +
                     "where x.id_produto = y.id_produto      \n" +
                     "and   y.id_pedido = z.id               \n" +
-                    "and   y.status = 'A'                   \n" +
+                    "and   z.status = 'A'                   \n" +
                     "and   z.id_usuario = " + idUsuario;
      
         PreparedStatement stmt = this.conn.prepareCall(sql);

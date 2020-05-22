@@ -258,7 +258,7 @@ textarea:focus, input:focus, select:focus {
     transition: opacity 1s;
 }
 
-/* estilizando o botÃ£o abrir menu */
+/* estilizando o botao abrir menu */
 .menu-open{
     position:fixed;
     z-index:999;
@@ -270,6 +270,8 @@ textarea:focus, input:focus, select:focus {
     border-radius: 50%;
     color:rgba(7, 3, 3, 0.966);
     background-color: rgb(253, 249, 16);
+    text-decoration: none;
+    cursor: auto;
 }
 
 /* estilizando o botÃ£o fechar menu */
@@ -352,4 +354,8 @@ textarea:focus, input:focus, select:focus {
     border:none;
     padding:2px;
     border-radius: 1px;
+}
+
+.deslogar{
+    text-decoration: none;
 }

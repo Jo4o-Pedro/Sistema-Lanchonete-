@@ -244,6 +244,7 @@ public class HomeController {
     @RequestMapping("fimPedido")
     public String finalizarpedidos(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String id_user){
     try{
+        System.out.println(id_user);
         CarrinhoDao car = new CarrinhoDao();
         ArrayList<Produto> prods = car.findProdutoCarrinho(id_user);
         car.desativaPedido(id_user);
