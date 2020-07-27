@@ -1,5 +1,5 @@
 # Sistema-Lanchonete-
-Sistema de lanchonete online, utilizando Java Web EE 7, Maven, Postgresql e algumas outras tecnologias
+~~Sistema de lanchonete online~~ Sistema de Locadora de Filmes Online, utilizando Java Web EE 7, Maven, Postgresql e algumas outras tecnologias
 JDK 8
 
 Projeto do 3º semestre da faculdade de computação onde o requisito era a entrega de um software para locadoras de video utilizando a linguagem Java e banco de dados.
@@ -10,4 +10,5 @@ O prazo de desenvolvimento do projeto foi de 3 meses, onde os 2 participantes ti
 
 Como o trabalho era obrigatório em Java, baseado na aulas que estavam tendo no semestre, e nenhum dos dois participantes haviam trabalhado com a linguagem anteriormente, de fato, o projeto tem alguns erros que não teriam se os mesmos tivessem mais conhecimento sobre a ferramenta, porem, os dois agradecem a sua curiosidade em procurar pelo projeto e pedem compreensão com o contexto citado.
 
+Ps.: A principio o sistema seria de uma Lanchonete, mas por conta de que os mestres/orientadores não terem dado essa opção, no ultimo momento foi adaptado para um sistema de locação de filmes.
 :D
