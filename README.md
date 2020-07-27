@@ -1,4 +1,4 @@
-# Sistema-Lanchonete-
+# Sistema-LocadoraFilmes
 ~~Sistema de lanchonete online~~ Sistema de Locadora de Filmes Online, utilizando Java Web EE 7, Maven, Postgresql e algumas outras tecnologias
 JDK 8
 
