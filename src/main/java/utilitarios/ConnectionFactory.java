@@ -16,7 +16,7 @@ import models.Usuario;
 public class ConnectionFactory {
     public static Connection getConnection() throws ClassNotFoundException, SQLException{
         /**salvando informações necessarias pra conexão */
-        String url = "jdbc:postgresql://localhost:5432/SistemaAps";
+        String url = "jdbc:postgresql://localhost:5432/BancoAPS";
         String usuario = "postgres";
         String senha = "postgres";
         

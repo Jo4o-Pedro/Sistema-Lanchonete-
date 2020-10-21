@@ -13,6 +13,9 @@
 </head>
 <body>
     <header>
+        <div class="menu">
+            <a href="<c:url value="index" />" ><h2>(っ◔◡◔)っ ♥ Back'sDonald's ♥</h2></a>
+        </div>
         <form:form class="formCadastro" action="/Sistema-Lanchonete-/CrudProd" modelAttribute="produto">
         <div class="menu">
             <ul>
@@ -37,7 +40,7 @@
     <div id = "PAGINAINTEIRA">
         <div id="blocoCadastro">
             <div id="CodigoProd">
-                <label>Codigo do Ingrediente</label><br>
+                <label>Codigo </label><br>
                 <form:input path="id" type="text"  tabindex="-1"/>  
             </div><br>
             <div id="NomeReduzido">
@@ -46,7 +49,7 @@
             </div><br>
             <div id="DescricaoProd">
                 <label>Descrição</label><br>
-                <form:input path="descricao" type="text"  tabindex="-1"/>
+                <form:textarea path="descricao" type="text"  tabindex="-1"/>
             </div><br>
             <div id="Preco">
                     <label>Preço</label><br>
@@ -55,16 +58,12 @@
             <div id="CategoriaProd">
                 <label>Categoria</label><br>
                 <form:select path="categoria" id="ComboCategoria"  tabindex="-1">
-                    <form:option value="ACAO"> Ação </form:option>
-                    <form:option value="AVENTURA"> Aventura </form:option>
-                    <form:option value="TERROR"> Terror </form:option>
-                    <form:option value="COMEDIA"> Comédia </form:option>
+                    <form:option value="PAO"> Pão </form:option>
+                    <form:option value="CARNE"> Carne </form:option>
+                    <form:option value="SALADA"> Salada </form:option>
+                    <form:option value="MOLHO"> Molho </form:option>
                 </form:select>
             </div><br>
-            <div id="InfoProd">
-                <label>Informações Produto</label><br>
-                <form:textarea  path="informacao" tabindex="-1"></form:textarea>
-            </div>
             <br>
         </form:form>
         </div>

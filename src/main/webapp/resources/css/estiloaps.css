@@ -134,8 +134,8 @@ textarea:focus, input:focus, select:focus {
 .assinatura{
     background-color: #ce2b1fbe;
     color: rgb(252, 252, 252);
-    padding-bottom: 15px;
-    margin-bottom: 0;
+    position:absolute;
+    bottom:0;
 }
 .carrinho{
     position:fixed;
