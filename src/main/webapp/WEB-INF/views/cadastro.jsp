@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="menu">
-            <a href="<c:url value="index" />" ><h2>Backdonalds</h2></a>
+            <a href="<c:url value="index" />" ><h2>LocaDex</h2></a>
         </div>
     </header>
     <div>
@@ -35,7 +35,7 @@
                     <li><form:input path="telefone" type="tel" name="telefone"/></li>
                     <li><input type="submit" class="finalcadastro" name="cadastrar" value="Cadastrar"/></li>
                     <br>
-                    <h3 id='EmailExistente'>Esse Email jÃ¡ estÃ¡ cadastrado!</h3>
+                    <h3 id='EmailExistente'>Esse Email ja esta cadastrado!</h3>
                 </ul>   
             </div>
         </form:form>

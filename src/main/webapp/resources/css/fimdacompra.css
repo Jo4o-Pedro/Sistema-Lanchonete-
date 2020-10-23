@@ -64,6 +64,6 @@ header{
     position: relative;
 }
 
-.produto{
-    
+.esconde{
+    display: none;
 }

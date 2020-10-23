@@ -27,7 +27,7 @@ public class ProdutoDao {
     
     /**cria o SQL do insert q sera enviado para o Banco */
     public void Insert(Produto produto) throws SQLException {
-        String sql = "INSERT INTO produto(nome, descricao, categoria, preco, informacao) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO ingrediente(nome_ingrediente, descricao, categoria, preco) VALUES(?,?,?,?)";
 
         /**pegando os gets de pessoa q deverão der preenchidos */
         PreparedStatement stmt = this.conn.prepareStatement(sql);
@@ -35,8 +35,6 @@ public class ProdutoDao {
             stmt.setString(2, produto.getDescricao());
             stmt.setString(3, produto.getCategoria());
             stmt.setFloat(4, produto.getPreco());
-            stmt.setString(5, produto.getInformacao());
-            System.out.println("CHEGOU NO INSERT");
             stmt.executeUpdate();
 
             stmt.close();
@@ -50,7 +48,6 @@ public class ProdutoDao {
         if(validacao.ValidaExiste("produto", filtroWhere)){
             try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
                 stmt.setLong(1, produto.getId());
-                System.out.println("CHEGOU NO delete");
                 stmt.executeUpdate();
                 stmt.close();
             }
@@ -72,7 +69,6 @@ public class ProdutoDao {
                 stmt.setFloat(4, produto.getPreco());
                 stmt.setString(5, produto.getInformacao());
                 stmt.setLong(6, produto.getId());
-                System.out.println("CHEGOU NO delete");
                 stmt.executeUpdate();
                 stmt.close();
             }

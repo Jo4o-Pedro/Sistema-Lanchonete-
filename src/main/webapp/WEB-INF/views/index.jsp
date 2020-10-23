@@ -6,7 +6,7 @@
 <html lang="pt-br">
 <head>
     <meta charset='utf-8'>
-    <title>Pagina Principal</title>
+    <title>♥ Back'sDonald's ♥</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/estiloaps.css" />" />
     
@@ -14,12 +14,12 @@
 <body>    
     <header class='menu'>
         <div id='menurelativo'>
-            <div id="logo"><strong>LocaDex</strong></div>
+            <div id="logo"><strong>(っ◔◡◔)っ ♥ Back'sDonald's ♥</strong></div>
             <nav id="menuinicial">
                 <ul class="btn">
                     <li><a class="btnmenu">login</a><br/></li>
-                    <li><a href="<c:url value="cadastro" />" >cadastar</a><br></li>
-                    <li><a href="<c:url value="cadprod" />" >pagina secreta</a><br></li>
+                    <li><a href="<c:url value="cadastro" />" >cadastRar</a><br></li>
+                    <li><a href="<c:url value="cadprod" />" >pagina administrativa</a><br></li>
                 </ul>
             </nav><br>
         </div> 
@@ -27,52 +27,20 @@
         <br>
     </header>
     <div class="pagina">
-        <div id="objPesquisa">
-            <ul>
-                <li>
-                    <form:form action="/Sistema-Lanchonete-/acao" method="post">
-                        <input type="submit" id="Acao" name="action" value="Acao ">
-                    </form:form> 
-                </li>
-                <li>
-                    <form:form action="/Sistema-Lanchonete-/aventura" method="post">
-                        <input type="submit" id="Aventura" name="action" value="Aventura ">
-                    </form:form>
-                </li>
-                <li>
-                    <form:form action="/Sistema-Lanchonete-/comedia" method="post">
-                        <input type="submit" id="Comedia" name="action" value="Comedia ">
-                    </form:form>
-                </li>
-                <li>
-                    <form:form action="/Sistema-Lanchonete-/terror" method="post">
-                        <input type="submit" id="Terror" name="action" value="Terror " /> 
-                    </form:form>
-                </li>
-                <li>
-                    <form:form action="/Sistema-Lanchonete-/filtro" modelAttribute="pesquisa" method="post">
-                        <form:input type="text" path="filtro" id="search" placeholder="Pesquisa..." onblur="clicaBtn()" />
-                        <input type="submit" class="esconde" name="action" value="pesquisa " id="BtnPesquisa"/>
-                    </form:form>
-                </li>
-            </ul>
-        </div>
         <div class="cardapio">
-            <c:forEach items="${lista}" var="lista">
                 <div class="produto">
                     <div class="tituloProduto">
-                        <div>${lista.nome}</div>
+                        <div>$TESTE</div>
                     </div>
                     <div class="infosProduto">
                         <div>
-                           ${lista.descricao}
+                           TESTAD
                         </div>
                     </div>
                     <div class="finalCaixaLanche">
                         <br>
                     </div>
                 </div>
-            </c:forEach>
         </div>
 
                 

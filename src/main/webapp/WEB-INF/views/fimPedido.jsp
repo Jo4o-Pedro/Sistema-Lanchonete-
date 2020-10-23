@@ -38,11 +38,12 @@
             <div class="infopessoais">
                 <div class="infopagamento">
                     <strong>Finalizar </strong><br>
-                    <label> Confirmar endereço de e-mail:</label>
-                    <input type="email"><br> <br>
+                    <label> O filme irá para o seu email em alguns instantes</label>
                 </div>
-             
-                <input class="botaofinal" type="button" value="Finalizar Compra">
+                    <form:form action="/Sistema-Lanchonete-/LoginUsuario" modelAttribute="loginUsuario" method="post">
+                        <input class="botaofinal" type="submit" value="Finalizar Compra">
+                    </form:form> 
+                    
             </div>
         </div>
     </div>
