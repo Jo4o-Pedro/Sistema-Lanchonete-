@@ -58,7 +58,7 @@ public class ProdutoDao {
     };
     
     public void Update(Produto produto) throws SQLException, ClassNotFoundException {
-        String sql = "Update produto set nome = ?, descricao = ?, categoria = ?, preco = ?, informacao = ? where id_produto = ?";
+        String sql = "Update produto set nome = ?, descricao = ?, categoria = ?, preco = ? where id_produto = ?";
         String filtroWhere = "id_produto =" +  produto.getId();
         ValidacaoDao validacao = new ValidacaoDao();
         if(validacao.ValidaExiste("produto", filtroWhere)){
@@ -67,7 +67,6 @@ public class ProdutoDao {
                 stmt.setString(2, produto.getDescricao());
                 stmt.setString(3, produto.getCategoria());
                 stmt.setFloat(4, produto.getPreco());
-                stmt.setString(5, produto.getInformacao());
                 stmt.setLong(6, produto.getId());
                 stmt.executeUpdate();
                 stmt.close();
@@ -102,7 +101,6 @@ public class ProdutoDao {
            prod.setCategoria(categoria);
            prod.setDescricao(descricao);
            prod.setId(id);
-           prod.setInformacao(informacao);
            prod.setNome(nome);
            prod.setPreco(preco);
            
@@ -116,7 +114,8 @@ public class ProdutoDao {
     public ArrayList<Produto> findProdutoCategoria(String categoria) throws SQLException{
        ArrayList<Produto> lista = new ArrayList<>();
        
-       String sql = "Select * from produto where upper(categoria) like upper('%" + categoria + "%')";
+       String sql = "Select id_ingrediente, nome_ingrediente, descricao, preco, categoria"
+        + " from ingrediente where upper(categoria) like upper('%" + categoria + "%')";
        
        PreparedStatement stmt = this.conn.prepareCall(sql);
        
@@ -128,16 +127,14 @@ public class ProdutoDao {
        while(rs.next()){
            Long id = rs.getLong(1);
            String nome = rs.getString(2);
-           String descricao = rs.getString(3);
-           categoria = rs.getString(4);  
-           float preco = rs.getFloat(5);
-           String informacao = rs.getString(6);
+           String descricao = rs.getString(3); 
+           float preco = rs.getFloat(4);
+           categoria = rs.getString(5); 
            
            Produto prod = new Produto();
            prod.setCategoria(categoria);
            prod.setDescricao(descricao);
            prod.setId(id);
-           prod.setInformacao(informacao);
            prod.setNome(nome);
            prod.setPreco(preco);
            
@@ -171,7 +168,6 @@ public class ProdutoDao {
            prod.setCategoria(categoria);
            prod.setDescricao(descricao);
            prod.setId(id);
-           prod.setInformacao(informacao);
            prod.setNome(nome);
            prod.setPreco(preco);
            
@@ -195,11 +191,9 @@ public class ProdutoDao {
         String descricao = rs.getString(3);
         String categoria = rs.getString(4);  
         float preco = rs.getFloat(5);
-        String informacao = rs.getString(6);
 
         prod.setCategoria(categoria);
         prod.setDescricao(descricao);
-        prod.setInformacao(informacao);
         prod.setNome(nome);
         prod.setPreco(preco);
 

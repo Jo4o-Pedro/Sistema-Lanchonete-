@@ -6,7 +6,6 @@ public class Produto {
     private Long id;
     private String nome;
     private String descricao;
-    private String informacao;
     private float preco;
     private String categoria;
 
@@ -32,14 +31,6 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getInformacao() {
-        return informacao;
-    }
-
-    public void setInformacao(String informacao) {
-        this.informacao = informacao;
     }
 
     public float getPreco() {

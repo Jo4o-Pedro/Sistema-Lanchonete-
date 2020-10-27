@@ -84,109 +84,7 @@ public class HomeController {
         ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
         model.addAttribute("carrinho", listaCarrinho);
         
-        //aqui popula a pagina com os produtos(NO caso com categoria Acao)
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("acao");
-        model.addAttribute("lista", lista);
-
-        model.addAttribute("user", user);
-
-        retorno = "home";
-      }
-        return retorno;
-    }
-
-    @RequestMapping(value = "/aventura", method = RequestMethod.POST)
-    public String Aventura(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
-    throws ClassNotFoundException, SQLException {
-      String retorno = null;
-      if( action.equals("Aventura ") ){
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("aventura");
-        model.addAttribute("lista", lista);
-        retorno = "/index";
-      }
-      else if( action.equals("Aventura") ){
-        //trecho usado para pegar o ID do usuario e usar para popular carrinho
-        ClientesDao userDao = new ClientesDao();
-        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
-        Long id = user.get(0).getId();
         
-        //aqui popula o carrinho
-        CarrinhoDao carrinho = new CarrinhoDao();
-        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
-        model.addAttribute("carrinho", listaCarrinho);
-        
-        //aqui popula a pagina com os produtos(NO caso com categoria Aventura)
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("aventura");
-        model.addAttribute("lista", lista);
-
-        model.addAttribute("user", user);
-
-        retorno = "home";
-      }
-        return retorno;
-    }
-
-    @RequestMapping(value = "/comedia", method = RequestMethod.POST)
-    public String Comedia(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
-    throws ClassNotFoundException, SQLException {
-      String retorno = null;
-      if( action.equals("Comedia ") ){
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("comedia");
-        model.addAttribute("lista", lista);
-        retorno = "/index";
-      }
-      else if( action.equals("Comedia") ){
-        //trecho usado para pegar o ID do usuario e usar para popular carrinho
-        ClientesDao userDao = new ClientesDao();
-        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
-        Long id = user.get(0).getId();
-        
-        //aqui popula o carrinho
-        CarrinhoDao carrinho = new CarrinhoDao();
-        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
-        model.addAttribute("carrinho", listaCarrinho);
-        
-        //aqui popula a pagina com os produtos(NO caso com categoria Comedia)
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("comedia");
-        model.addAttribute("lista", lista);
-
-        model.addAttribute("user", user);
-
-        retorno = "home";
-      }
-        return retorno;
-    }
-
-    @RequestMapping(value = "/terror", method = RequestMethod.POST)
-    public String Terror(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
-    throws ClassNotFoundException, SQLException {
-      String retorno = null;
-      if( action.equals("Terror ") ){
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("terror");
-        model.addAttribute("lista", lista);
-        retorno = "/index";
-      }
-      else if( action.equals("Terror") ){
-        //trecho usado para pegar o ID do usuario e usar para popular carrinho
-        ClientesDao userDao = new ClientesDao();
-        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
-        Long id = user.get(0).getId();
-        
-        //aqui popula o carrinho
-        CarrinhoDao carrinho = new CarrinhoDao();
-        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
-        model.addAttribute("carrinho", listaCarrinho);
-        
-        //aqui popula a pagina com os produtos(NO caso com categoria Terror)
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("terror");
-        model.addAttribute("lista", lista);
 
         model.addAttribute("user", user);
 
@@ -280,14 +178,28 @@ public class HomeController {
                 ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
                 model.addAttribute("user", user);
                 Long id = user.get(0).getId();
-
-                ProdutoDao prodDao = new ProdutoDao();
-                ArrayList<Produto> lista = prodDao.findAllProduto();
-                model.addAttribute("lista", lista);
                 
                 CarrinhoDao carrinho = new CarrinhoDao();
                 ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
                 model.addAttribute("carrinho", listaCarrinho);
+
+                //aqui popula a pagina com os ingredientes de acordo com suas categorias
+        
+                ProdutoDao ProdCarne = new ProdutoDao();
+                ArrayList<Produto> carne = ProdCarne.findProdutoCategoria("carne");
+                model.addAttribute("carnes", carne);
+
+                ProdutoDao ProdPao = new ProdutoDao();
+                ArrayList<Produto> pao = ProdPao.findProdutoCategoria("pao");
+                model.addAttribute("paes", pao);
+
+                ProdutoDao ProdSalada = new ProdutoDao();
+                ArrayList<Produto> salada = ProdSalada.findProdutoCategoria("salada");
+                model.addAttribute("saladas", salada);
+
+                ProdutoDao ProdMolho = new ProdutoDao();
+                ArrayList<Produto> molho = ProdMolho.findProdutoCategoria("molho");
+                model.addAttribute("molhos", molho);
                 
                 return "home";
             } else {
@@ -367,6 +279,5 @@ public class HomeController {
         usuario.setEmail(email);
         redirectAttributes.addFlashAttribute("loginUsuario", usuario);
         return "redirect:LoginUsuario";
-
     }
 }

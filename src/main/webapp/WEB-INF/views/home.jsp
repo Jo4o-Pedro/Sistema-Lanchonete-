@@ -26,39 +26,83 @@
     </header>
     <div class="pagina">
         <div class="cardapio">
-            <c:forEach items="${lista}" var="lista">
-                <div class="produto">
-                    <div class="tituloProduto">
-                        <div>${lista.nome}</div>
-                    </div>
-                    <div class="infosProduto">
-                        <div>
-                           ${lista.descricao}
-                        </div>
-                    </div>
-                    <div class="finalCaixaLanche">
-                        <br>
-                        <form:form action="/Sistema-Lanchonete-/adiciona" method="POST">
-                            <c:forEach items="${user}" var="user">
-                               <input class="esconde" type="text" name="idUser" value="${user.id}"/>
-                               <input class="esconde" type="text" name="senha" value="${user.senha}"/>
-                               <input class="esconde" type="text" name="email" value="${user.email}"/>
-                            </c:forEach>
-                               <input class="esconde" type="text" name="id_produto" value="${lista.id}"/>
-                               <input type="number" class="esconde" name="quantidade" value="1" />
-                            <input type="submit" class="add" name="add_carinho" value="adicionar" />
-                        </form:form>
-                    </div>
+            <div class="produto">
+                <div class="tituloProduto">
+                    <div>Pães</div>
                 </div>
-            </c:forEach>
+                <div class="infosProduto">
+                   <c:forEach items="${paes}" var="paes">
+                    <input type="radio" id="paes" name="paes" value=${paes.nome}>
+                    <h3>${paes.nome}</h3>
+                    <p>${paes.descricao}</p>
+                    <hr>
+                   </c:forEach>
+                </div>
+                <div class="finalCaixaLanche">
+                    <br>
+                </div>
+            </div>
+            <div class="produto">
+                <div class="tituloProduto">
+                    <div>Carnes</div>
+                </div>
+                <div class="infosProduto">
+                   <c:forEach items="${carnes}" var="carnes">
+                    <input type="radio" id="salada" name="carnes" value=${carnes.nome}>
+                    <h3>${carnes.nome}</h3>
+                    <p>${carnes.descricao}</p>
+                    <hr>
+                   </c:forEach>
+                </div>
+                <div class="finalCaixaLanche">
+                    <br>
+                </div>
+            </div>
+            <div class="produto">
+                <div class="tituloProduto">
+                    <div>Molhos</div>
+                </div>
+                <div class="infosProduto">
+                   <c:forEach items="${molhos}" var="molhos">
+                    <input type="radio" id="molhos" name="molhos" value=${molhos.nome}>
+                    <h3>${molhos.nome}</h3>
+                    <p>${molhos.descricao}</p>
+                    <hr>
+                   </c:forEach>
+                </div>
+                <div class="finalCaixaLanche">
+                    <br>
+                </div>
+            </div>
+            <div class="produto">
+                <div class="tituloProduto">
+                    <div>Saladas</div>
+                </div>
+                <div class="infosProduto">
+                   <c:forEach items="${saladas}" var="saladas">
+                    <input type="radio" id="salada" name="salada" value=${saladas.nome}>
+                    <h3>${saladas.nome}</h3>
+                    <p>${saladas.descricao}</p>
+                    <hr>
+                   </c:forEach>
+                </div>
+                <div class="finalCaixaLanche">
+                    <br>
+                    <form:form action="/Sistema-Lanchonete-/adiciona" method="POST">
+                        <c:forEach items="${user}" var="user">
+                           <input class="esconde" type="text" name="idUser" value="${user.id}"/>
+                           <input class="esconde" type="text" name="senha" value="${user.senha}"/>
+                           <input class="esconde" type="text" name="email" value="${user.email}"/>
+                        </c:forEach>
+                           <input class="esconde" type="text" name="id_produto" value="${lista.id}"/>
+                           <input type="number" class="esconde" name="quantidade" value="1" />
+                        <input type="submit" class="add" name="add_carinho" value="adicionar" />
+                    </form:form>
+                </div>
+            </div>
         </div>
 
                 
-
-    <footer>
-        <p class="assinatura">Desenvolvido por: Vinicius BInué/João Tostes</p>
-    </footer>
-    
     </div>
     <div class="modalLogin" id="modalID">
         <div class="modal" id="modalDentro">
