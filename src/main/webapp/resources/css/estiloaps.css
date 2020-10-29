@@ -1,5 +1,9 @@
+html{
+    width: 100%;
+    height: 100%;
+}
 body{
-    background-color: rgba(252, 252, 252, 0.363);
+    background-image: url('https://cdn.discordapp.com/attachments/757733760979435562/770796988710256660/fUNDO.jpg');
     margin: 0;
     padding: 0;
     font-family: 'Spartan', sans-serif;
@@ -8,9 +12,7 @@ header{
     right: 0;
     position: sticky;
     top: 0;
-    padding: 5px;
-    background-color: rgba(255, 255, 255, 0.959);
-    
+    padding: 1px;    
 }
 
 .esconde{
@@ -22,13 +24,19 @@ header{
     padding-top: 25px;
     padding-left: 25px;
 }
+#logo img{
+    width: 300px;
+}
 
 .menu{
     margin-top: 0px;
 }
+.sombrear{
+    height: 30px;
+    background-color:rgba(255, 255, 255, 0.5)
+}
 
 #menuinicial ul{
-    float:right;
     padding:0px;
     margin:0px;
     list-style:none;
@@ -108,28 +116,26 @@ textarea:focus, input:focus, select:focus {
 }
 
 .produto{
-    margin: 5%;
+    margin: 10%;
 }
 
 .tituloProduto{
-    background-color: tomato;
+    background-image: linear-gradient(to bottom right, #ff5b0d, #ffc32b);
     text-align: center;
     border-radius: 10px  10px 0 0 ;
+    font-weight: bold;
     padding: 1% 0 1% 0;
 }
 
 .infosProduto{
     background-color: rgb(245, 125, 104);
-    text-align: left;
+    text-align: center;
     padding: 2%;
     width: auto;
     overflow:auto;
+    border-radius: 0px 0px 10px 10px
 }
 
-.finalCaixaLanche{
-    background-color: tomato;
-    border-radius: 0 0 10px 10px;
-}
 
 .assinatura{
     background-color: #ce2b1fbe;

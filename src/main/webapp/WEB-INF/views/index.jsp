@@ -14,14 +14,16 @@
 <body>    
     <header class='menu'>
         <div id='menurelativo'>
-            <div id="logo"><strong>(っ◔◡◔)っ ♥ Back'sDonald's ♥</strong></div>
-            <nav id="menuinicial">
-                <ul class="btn">
-                    <li><a class="btnmenu">login</a><br/></li>
-                    <li><a href="<c:url value="cadastro" />" >cadastRar</a><br></li>
-                    <li><a href="<c:url value="cadprod" />" >pagina administrativa</a><br></li>
-                </ul>
-            </nav><br>
+            <div id="logo"><img src="https://cdn.discordapp.com/attachments/757733760979435562/770459941458804766/LogoNOvanova.png"></div>
+            <div class="sombrear">    
+                <nav id="menuinicial">
+                    <ul class="btn">
+                        <li><a class="btnmenu">login</a><br/></li>
+                        <li><a href="<c:url value="cadastro" />" >cadastRar</a><br></li>
+                        <li><a href="<c:url value="cadprod" />" >pagina administrativa</a><br></li>
+                    </ul>
+                </nav><br>
+            </div>
         </div> 
         <br>
         <br>
@@ -30,11 +32,13 @@
         <div class="cardapio">
                 <div class="produto">
                     <div class="tituloProduto">
-                        <div>$TESTE</div>
+                        <div>Come Lanche do tamanho da sua fome</div>
                     </div>
                     <div class="infosProduto">
                         <div>
-                           TESTAD
+                            faça login em nossa plataforma e aproveite nossa deliciosas opções<br>
+                            você escolhe os ingredientes q mais combinam com sua fome <br>
+                            
                         </div>
                     </div>
                     <div class="finalCaixaLanche">
@@ -46,7 +50,7 @@
                 
 
     <footer>
-        <p class="assinatura">Desenvolvido por: Vinicius BInué/João Tostes</p>
+        <p class="assinatura">Desenvolvido por: Vinicius BInué/João Tostesgay/cesar corno/ murilo boi</p>
     </footer>
     
     </div>
