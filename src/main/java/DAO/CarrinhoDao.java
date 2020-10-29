@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import models.Produto;
 import models.Usuario;
+import models.Lanche;
 import utilitarios.ConnectionFactory;
 
 public class CarrinhoDao {
@@ -25,36 +26,33 @@ public class CarrinhoDao {
         System.out.println("Executando antes de destruir o objeto");
         this.conn.close();
     };
-    ////////////////////////
-    
+
     public ArrayList<Carrinho> findCarrinho(Long id) throws SQLException{
         ArrayList<Carrinho> lista = new ArrayList<>();
-       
-        String sql= "select max(a.id), max(a.id_pedido), max(a.id_produto), sum(a.qntd), max(b.nome)\n" +
-                    "from carrinho a, produto b                            \n" +
-                    "where a.id_produto = b.id_produto                     \n" +
-                    "and a.id_pedido = (select id from pedido              \n" +
-                    "			where id_usuario = '"+ id +"'      \n" +
-                    "			and status = 'A')                  \n" +
-                    "group by a.id_produto";
+        String sql= "SELECT B.ID, A.PAO, A.CARNE, A.SALADA, A.MOLHO, A.VALOR, A.ID FROM LANCHE A, PEDIDO B "
+                  + "WHERE A.PEDIDO = B.ID "
+                  + "AND USUARIO =" + id + " AND B.STATUS = 'A'";
         
         PreparedStatement stmt = this.conn.prepareCall(sql);
        
         ResultSet rs = stmt.executeQuery();
-
         while(rs.next()){
-           Long id_carrinho = rs.getLong(1);
-           Long id_pedido = rs.getLong(2);
-           Long id_produto = rs.getLong(3);
-           int qntd = rs.getInt(4);
-           String nome_prod = rs.getString(5);
+           Long id_pedido = rs.getLong(1);
+           String pao = rs.getString(2);
+           String carne = rs.getString(3);
+           String salada = rs.getString(4);
+           String molho = rs.getString(5);
+           int valor = rs.getInt(6);
+           Long id_lanche = rs.getLong(7);
            
            Carrinho produtos = new Carrinho();
-           produtos.setId(id_carrinho);
            produtos.setId_pedido(id_pedido);
-           produtos.setId_produto(id_produto);
-           produtos.setQuantidade(qntd);
-           produtos.setNome_prod(nome_prod);
+           produtos.setPao(pao);
+           produtos.setCarne(carne);
+           produtos.setSalada(salada);
+           produtos.setMolho(molho);
+           produtos.setValor(valor);
+           produtos.setId_lanche(id_lanche);
            
            lista.add(produtos);
        }
@@ -63,14 +61,13 @@ public class CarrinhoDao {
     }
     
     
-    public void insertcar(int quantidade,long id_produto,String usuario) throws SQLException{
+    public void insertcar(String usuario, Carrinho objLanche) throws SQLException{
         int id_usuario = Integer.parseInt(usuario);
-        String sqls="Select a.id_pedido                       \n" +
-                    "from carrinho a, produto b                                    \n" +
-                    "where a.id_produto = b.id_produto                             \n" +
-                    "and a.id_pedido = (select id from pedido                      \n" +
-                    "			where id_usuario = "+id_usuario+"      \n" +
-                    "			and status = 'A')";
+        String sqls="Select a.pedido                       \n" +
+                    "from lanche a, pedido b                          \n" +
+                    "where a.pedido = b.id "
+                  + "and a.usuario = "+id_usuario+ 
+                    " and b.status = 'A'";
         
         PreparedStatement stmts = this.conn.prepareStatement(sqls, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         
@@ -99,11 +96,20 @@ public class CarrinhoDao {
             
         }
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!AQUI33333333!!!!!!!!!!!!!!!!!!!");
-        String sqlc = ("INSERT INTO carrinho (id_pedido, id_produto, qntd) VALUES (?, ?, ?)");
+        String sqlc = ("INSERT INTO lanche (status, pedido, usuario, pao, carne, molho, salada, valor ) Select 'A', ?, ?, ?, ? ,?, ?, "
+                    + "(select sum(preco) from ingrediente where nome_ingrediente in(?,?,?,?))");
+
         PreparedStatement stmc = this.conn.prepareStatement(sqlc);
         stmc.setLong(1, id_pedido);
-        stmc.setLong(2, id_produto);
-        stmc.setInt(3, quantidade);
+        stmc.setInt(2, id_usuario);
+        stmc.setString(3, objLanche.getPao());
+        stmc.setString(4, objLanche.getCarne());
+        stmc.setString(5, objLanche.getMolho());
+        stmc.setString(6, objLanche.getSalada());
+        stmc.setString(7, objLanche.getPao());
+        stmc.setString(8, objLanche.getCarne());
+        stmc.setString(9, objLanche.getMolho());
+        stmc.setString(10, objLanche.getSalada());
         
         stmc.executeUpdate();
         
@@ -135,11 +141,35 @@ public class CarrinhoDao {
     stmt.close();   
     return lista;
     }
+
+    public ArrayList<Carrinho> calculaTotal(Long id) throws SQLException{
+        ArrayList<Carrinho> lista = new ArrayList<>();
+        String sql= "select sum(a.valor)       \n" +
+                    "from lanche a   \n" +
+                    "where a.usuario = " + id + "and a.status = 'A'";
+     
+        PreparedStatement stmt = this.conn.prepareCall(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        while(rs.next()){
+           int total = rs.getInt(1);
+           
+           Carrinho car = new Carrinho();
+           car.setTotal(total);
+           lista.add(car);
+       }
+    stmt.close();   
+    return lista;
+    }
     
     public void desativaPedido(String idUsuario) throws SQLException{
         String sql = "Update pedido set status = 'I' where id_usuario = "+ idUsuario;
         PreparedStatement stmt = this.conn.prepareStatement(sql);
         stmt.executeUpdate();
         stmt.close();
+        String sql2 = "Update lanche set status = 'I' where usuario = "+ idUsuario;
+        PreparedStatement stmt2 = this.conn.prepareStatement(sql2);
+        stmt2.executeUpdate();
+        stmt2.close();
     }
 }

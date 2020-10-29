@@ -33,3 +33,16 @@ qntd		integer,
 constraint pk_id_carrinho PRIMARY KEY (id),
 constraint fk_id_pedido FOREIGN KEY (id_pedido) REFERENCES pedido(id),
 constraint fk_id_produto Foreign key (id_produto) references produto(id_produto));
+
+create table lanche(
+id	serial,
+pao	varchar(100),
+carne	varchar(100),
+molho	varchar(100),
+salada	varchar(100),
+status  varchar(1),
+usuario	integer,
+pedido	integer,
+valor   float,
+constraint "pk_id_lanche" primary key (id),
+constraint "fk_id_usuario" foreign key (usuario) references usuario(id_usuario))

@@ -23,10 +23,8 @@
                 <c:forEach items="${prods}" var="prods">
                     <div class="produto">
                         <div class="tituloProduto">
-                            <div>${prods.nome}</div>
-                        </div>
-                        <div class="infosProduto">
-                            <div>R$ ${prods.preco}</div>
+                            <div>${prods.carne} + ${prods.salada}
+                                + ${prods.pao} + ${prods.molho} = R$ ${prods.valor}</div>
                         </div>
                         <div class="finalCaixaLanche">
                             <br>
@@ -38,7 +36,9 @@
             <div class="infopessoais">
                 <div class="infopagamento">
                     <strong>Finalizar </strong><br>
-                    <label> O filme irá para o seu email em alguns instantes</label>
+                    <c:forEach items="${total}" var="total">
+                        <h4>Preço: ${total.total} </h4><br>
+                    </c:forEach>
                 </div>
                     <form:form action="/Sistema-Lanchonete-/LoginUsuario" modelAttribute="loginUsuario" method="post">
                         <input class="botaofinal" type="submit" value="Finalizar Compra">

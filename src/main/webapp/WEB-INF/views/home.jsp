@@ -26,15 +26,18 @@
     </header>
     <div class="pagina">
         <div class="cardapio">
+            <form:form action="/Sistema-Lanchonete-/adiciona" method="POST">
             <div class="produto">
                 <div class="tituloProduto">
-                    <div>Pães</div>
+                    <h3>Pães</h3>
                 </div>
                 <div class="infosProduto">
                    <c:forEach items="${paes}" var="paes">
-                    <input type="radio" id="paes" name="paes" value=${paes.nome}>
-                    <h3>${paes.nome}</h3>
+                    <input type="radio" class="radiobtn" id="paes" name="paes" value=${paes.nome} checked>
+                    <h4>${paes.nome}</h4>
                     <p>${paes.descricao}</p>
+                    <br>
+                    <p>R$ ${paes.preco}</p>
                     <hr>
                    </c:forEach>
                 </div>
@@ -44,13 +47,15 @@
             </div>
             <div class="produto">
                 <div class="tituloProduto">
-                    <div>Carnes</div>
+                    <h3>Carnes</h3>
                 </div>
                 <div class="infosProduto">
                    <c:forEach items="${carnes}" var="carnes">
-                    <input type="radio" id="salada" name="carnes" value=${carnes.nome}>
-                    <h3>${carnes.nome}</h3>
+                    <input type="radio" class="radiobtn" id="carne" name="carnes" value=${carnes.nome} checked>
+                    <h4>${carnes.nome}</h4>
                     <p>${carnes.descricao}</p>
+                    <br>
+                    <p>R$ ${carnes.preco}</p>
                     <hr>
                    </c:forEach>
                 </div>
@@ -60,13 +65,15 @@
             </div>
             <div class="produto">
                 <div class="tituloProduto">
-                    <div>Molhos</div>
+                    <h3>Molhos</h3>
                 </div>
                 <div class="infosProduto">
                    <c:forEach items="${molhos}" var="molhos">
-                    <input type="radio" id="molhos" name="molhos" value=${molhos.nome}>
-                    <h3>${molhos.nome}</h3>
+                    <input type="radio" id="molhos" name="molhos" value=${molhos.nome} checked>
+                    <h4>${molhos.nome}</h4>
                     <p>${molhos.descricao}</p>
+                    <br>
+                    <p>R$ ${molhos.preco}</p>
                     <hr>
                    </c:forEach>
                 </div>
@@ -76,30 +83,31 @@
             </div>
             <div class="produto">
                 <div class="tituloProduto">
-                    <div>Saladas</div>
+                    <h3>Saladas</h3>
                 </div>
                 <div class="infosProduto">
                    <c:forEach items="${saladas}" var="saladas">
-                    <input type="radio" id="salada" name="salada" value=${saladas.nome}>
-                    <h3>${saladas.nome}</h3>
+                    <input type="radio" id="salada" name="saladas" value=${saladas.nome} checked>
+                    <h4>${saladas.nome}</h4>
                     <p>${saladas.descricao}</p>
+                    <br>
+                    <p>R$ ${saladas.preco}</p>
                     <hr>
                    </c:forEach>
                 </div>
                 <div class="finalCaixaLanche">
                     <br>
-                    <form:form action="/Sistema-Lanchonete-/adiciona" method="POST">
-                        <c:forEach items="${user}" var="user">
-                           <input class="esconde" type="text" name="idUser" value="${user.id}"/>
-                           <input class="esconde" type="text" name="senha" value="${user.senha}"/>
-                           <input class="esconde" type="text" name="email" value="${user.email}"/>
-                        </c:forEach>
-                           <input class="esconde" type="text" name="id_produto" value="${lista.id}"/>
-                           <input type="number" class="esconde" name="quantidade" value="1" />
-                        <input type="submit" class="add" name="add_carinho" value="adicionar" />
-                    </form:form>
+                    
                 </div>
             </div>
+            
+                <c:forEach items="${user}" var="user">
+                   <input class="esconde" type="text" name="idUser" value="${user.id}"/>
+                   <input class="esconde" type="text" name="senha" value="${user.senha}"/>
+                   <input class="esconde" type="text" name="email" value="${user.email}"/>
+                </c:forEach>
+                <input type="submit" class="add" name="add_carinho" value="adicionar" />
+            </form:form>
         </div>
 
                 
@@ -122,12 +130,13 @@
       <ul>
         <form:form action="/Sistema-Lanchonete-/fimPedido" method="POST">
             <c:forEach items="${carrinho}" var="carrinho">
-                <li><a href="<c:url value="#" />" target="_blank">${carrinho.nome_prod}</a></li>
+                <li>${carrinho.carne} + ${carrinho.salada}
+                 + ${carrinho.pao} + ${carrinho.molho} = R$ ${carrinho.valor}</a></li>
             </c:forEach>
             <c:forEach items="${user}" var="user">
                 <input class="esconde" type="text" name="id_user" value="${user.id}"/>
             </c:forEach>
-            <input type="submit" name="add_carinho" value="adicionar" />
+            <input type="submit" name="add_carinho" value="Finalizar Pedido" />
         </form:form>
       </ul>
     </div>

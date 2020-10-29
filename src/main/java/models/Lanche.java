@@ -1,20 +1,18 @@
 package models;
 
-public class Carrinho {
+public class Lanche {
     private String carne;
     private String salada;
     private String pao;
     private String molho;
     private int    valor;
     private long   id_pedido;
-    private long   id_lanche;
-    private int    total;
 
-    public Carrinho(){
+    public Lanche(){
     
     };
 
-    public Carrinho(String carne, String salada, String pao, String molho){
+    public Lanche(String carne, String salada, String pao, String molho){
         this.carne = carne;
         this.salada = salada;
         this.pao = pao;
@@ -43,22 +41,6 @@ public class Carrinho {
 
     public Long getId_pedido() {
         return id_pedido;
-    }
-
-    public Long getId_lanche() {
-        return id_lanche;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public void setId_lanche(Long id_lanche) {
-        this.id_lanche = id_lanche;
     }
 
     public void setId_pedido(Long id_pedido) {

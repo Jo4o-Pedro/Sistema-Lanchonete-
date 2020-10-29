@@ -7,6 +7,7 @@ import DAO.ValidacaoDao;
 import models.Usuario;
 import models.Filtro;
 import models.Produto;
+import models.Lanche;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -143,10 +144,13 @@ public class HomeController {
     public String finalizarpedidos(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String id_user){
     try{
         System.out.println(id_user);
+        long id_userLong = Long.parseLong(id_user);
         CarrinhoDao car = new CarrinhoDao();
-        ArrayList<Produto> prods = car.findProdutoCarrinho(id_user);
+        ArrayList<Carrinho> prods = car.findCarrinho(id_userLong);
+        ArrayList<Carrinho> total = car.calculaTotal(id_userLong);
         car.desativaPedido(id_user);
         model.addAttribute("prods", prods);
+        model.addAttribute("total", total);
 
         return "fimPedido";
     }catch (ClassNotFoundException | SQLException ex) {
@@ -265,10 +269,12 @@ public class HomeController {
     }
     
     @RequestMapping(value = "adiciona", method = RequestMethod.POST)
-    public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, RedirectAttributes redirectAttributes, Model mode, @RequestParam String idUser, @RequestParam String senha, @RequestParam Long id_produto,@RequestParam String email, @RequestParam int quantidade) {
+    public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, RedirectAttributes redirectAttributes, Model mode, @RequestParam String idUser, @RequestParam String senha, @RequestParam String email,
+    @RequestParam String saladas, @RequestParam String carnes, @RequestParam String paes, @RequestParam String molhos) {
     try{
+            Carrinho novoLanch = new Carrinho(carnes, saladas, paes, molhos);
             CarrinhoDao daocar = new CarrinhoDao();
-            daocar.insertcar(quantidade, id_produto, idUser);
+            daocar.insertcar(idUser, novoLanch);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
