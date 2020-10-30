@@ -4,16 +4,16 @@ import DAO.CarrinhoDao;
 import DAO.ClientesDao;
 import DAO.ProdutoDao;
 import DAO.ValidacaoDao;
+import DAO.PedidoDao;
 import models.Usuario;
-import models.Filtro;
 import models.Produto;
-import models.Lanche;
+import models.Pedido;   
+import models.Carrinho;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.Carrinho;
 
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -61,73 +61,14 @@ public class HomeController {
     public Carrinho setCar() {
         return new Carrinho();
     }
+
+    @ModelAttribute("pedido")
+    public Pedido setPedido() {
+        return new Pedido();
+    }
     
     //Aqui estão os controllers para pesquisa de prodtuo
-    //
-    @RequestMapping(value = "/acao", method = RequestMethod.POST)
-    public String Acao(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action) 
-    throws ClassNotFoundException, SQLException {
-      String retorno = null;
-      if( action.equals("Acao ") ){
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoCategoria("acao");
-        model.addAttribute("lista", lista);
-        retorno = "/index";
-      }
-      else if( action.equals("Acao") ){
-        //trecho usado para pegar o ID do usuario e usar para popular carrinho
-        ClientesDao userDao = new ClientesDao();
-        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
-        Long id = user.get(0).getId();
-        
-        //aqui popula o carrinho
-        CarrinhoDao carrinho = new CarrinhoDao();
-        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
-        model.addAttribute("carrinho", listaCarrinho);
-        
-        
-
-        model.addAttribute("user", user);
-
-        retorno = "home";
-      }
-        return retorno;
-    }
     
-    @RequestMapping(value = "/filtro", method = RequestMethod.POST)
-    public String FiltrarProd(@ModelAttribute("loginUsuario")Usuario usuario, Model model, @RequestParam String action )
-        throws ClassNotFoundException, SQLException{        
-      String retorno = null;
-      System.out.println(action);
-      if( action.equals("pesquisa ") ){
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoFiltro(usuario);
-        model.addAttribute("lista", lista);
-        retorno = "/index";
-      }
-      else if( action.equals("pesquisa") ){
-        //trecho usado para pegar o ID do usuario e usar para popular carrinho
-        ClientesDao userDao = new ClientesDao();
-        ArrayList<Usuario> user = userDao.findUser(usuario.getEmail(), usuario.getSenha());
-        Long id = user.get(0).getId();
-        
-        //aqui popula o carrinho
-        CarrinhoDao carrinho = new CarrinhoDao();
-        ArrayList<Carrinho> listaCarrinho = carrinho.findCarrinho(id);
-        model.addAttribute("carrinho", listaCarrinho);
-        
-        //aqui popula a pagina com os produtos(NO caso com categoria BURGER)
-        ProdutoDao dao = new ProdutoDao();
-        ArrayList<Produto> lista = dao.findProdutoFiltro(usuario);
-        model.addAttribute("lista", lista);
-
-        model.addAttribute("user", user);
-
-        retorno = "home";
-      }
-        return retorno;
-    }
-    //
     //Fim dos controllers que pesquisam produto
     
     @RequestMapping("cadastro")
@@ -136,7 +77,12 @@ public class HomeController {
     }
 
     @RequestMapping("cadprod")
-    public String CadastroProduto(){
+    public String CadastroProduto(Model model){
+        Pedido pedido = new Pedido();
+        pedido.setTotalRS(0);
+        ArrayList<Pedido> pedidoLista = new ArrayList<>();
+        pedidoLista.add(pedido);
+        model.addAttribute("pedido", pedidoLista);
         return "CadastroProduto"; 
     }
     
@@ -233,10 +179,8 @@ public class HomeController {
     public String SelectProd(@ModelAttribute("produto")Produto produto, Model model ){
         try {
             ProdutoDao daoProd = new ProdutoDao();
-//            ArrayList<Produto> produtoBusca = daoProd.findProduto(produto);
             Produto produtoBusca = new Produto();
             produtoBusca = daoProd.findProduto(produto);
-            System.out.println(produto.getNome());
             model.addAttribute("produto", produtoBusca);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -250,7 +194,6 @@ public class HomeController {
     try {
             ProdutoDao daoProd = new ProdutoDao();
             daoProd.Delete(produto);
-            System.out.println(produto.getId());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -285,5 +228,25 @@ public class HomeController {
         usuario.setEmail(email);
         redirectAttributes.addFlashAttribute("loginUsuario", usuario);
         return "redirect:LoginUsuario";
+    }
+
+    @RequestMapping(value = "relatorio", method = RequestMethod.POST)
+    public String adicionar(@ModelAttribute("carrinho")Carrinho carrinho, RedirectAttributes redirectAttributes, Model model,
+    @RequestParam String inicio, @RequestParam String fim ) {
+        try{
+            PedidoDao pedidoDao = new PedidoDao();
+
+            ArrayList<Pedido> pedido = pedidoDao.totalMes(inicio, fim);
+            model.addAttribute("pedido", pedido);
+
+            CarrinhoDao produtos = new CarrinhoDao();
+
+            ArrayList<Carrinho> produtosLista = produtos.maisVendidos();
+            model.addAttribute("produtosLista", produtosLista);
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return  "/CadastroProduto"   ;
     }
 }

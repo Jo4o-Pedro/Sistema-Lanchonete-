@@ -116,31 +116,7 @@ public class CarrinhoDao {
         stmc.close();
     }
 
-    public ArrayList<Produto> findProdutoCarrinho(String idUsuario) throws SQLException{
-        ArrayList<Produto> lista = new ArrayList<>();
-        String sql= "select distinct(x.nome), preco         \n" +
-                    "from produto x, carrinho y, pedido z   \n" +
-                    "where x.id_produto = y.id_produto      \n" +
-                    "and   y.id_pedido = z.id               \n" +
-                    "and   z.status = 'A'                   \n" +
-                    "and   z.id_usuario = " + idUsuario;
-     
-        PreparedStatement stmt = this.conn.prepareCall(sql);
-        ResultSet rs = stmt.executeQuery();
-
-        while(rs.next()){
-           String nome = rs.getString(1);
-           float preco = rs.getFloat(2);
-           
-           Produto produtos = new Produto();
-           produtos.setNome(nome);
-           produtos.setPreco(preco);
-           System.out.println("CARRINHO !!!");
-           lista.add(produtos);
-       }
-    stmt.close();   
-    return lista;
-    }
+    
 
     public ArrayList<Carrinho> calculaTotal(Long id) throws SQLException{
         ArrayList<Carrinho> lista = new ArrayList<>();
@@ -171,5 +147,41 @@ public class CarrinhoDao {
         PreparedStatement stmt2 = this.conn.prepareStatement(sql2);
         stmt2.executeUpdate();
         stmt2.close();
+    }
+    
+    public ArrayList<Carrinho> maisVendidos() throws SQLException{
+        ArrayList<Carrinho> lista = new ArrayList<>();
+            String sql= "Select"
+                      + "(select carne from lanche group by carne order by count(carne) desc " +
+                        "limit 1), "
+                      + "(select salada from lanche group by salada order by count(salada) desc " +
+                        "limit 1), "
+                      + "(select pao from lanche group by pao order by count(pao) desc " +
+                        "limit 1), "
+                      + "(select molho from lanche group by molho order by count(molho) desc " +
+                        "limit 1)";
+
+
+            System.out.println(sql);
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                String carne = rs.getString(1);
+                String salada = rs.getString(2);
+                String pao = rs.getString(3);
+                String molho = rs.getString(4);
+
+                Carrinho carrinho = new Carrinho();
+                carrinho.setCarne(carne);
+                carrinho.setSalada(salada);
+                carrinho.setPao(pao);
+                carrinho.setMolho(molho);
+
+                lista.add(carrinho);
+            }
+        stmt.close();   
+        return lista; 
     }
 }

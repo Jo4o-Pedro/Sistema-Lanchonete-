@@ -4,6 +4,7 @@ public class Pedido {
     private Long id;
     private Long id_usuario;
     private String data;
+    private int totalRS;
 
     public Long getId() {
         return id;
@@ -27,5 +28,13 @@ public class Pedido {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public int getTotalRS() {
+        return totalRS;
+    }
+
+    public void setTotalRS(int totalRS) {
+        this.totalRS = totalRS;
     }
 }

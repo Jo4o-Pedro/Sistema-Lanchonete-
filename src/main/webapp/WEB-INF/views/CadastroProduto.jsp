@@ -41,23 +41,23 @@
         <div id="blocoCadastro">
             <div id="CodigoProd">
                 <label>Codigo </label><br>
-                <form:input path="id" type="text"  tabindex="-1"/>  
+                <form:input path="id" type="text"  />  
             </div><br>
             <div id="NomeReduzido">
                 <label>Nome Reduzido</label><br>
-                <form:input path="nome" type="text" tabindex="-1"/>
+                <form:input path="nome" type="text" />
             </div><br>
             <div id="DescricaoProd">
                 <label>Descrição</label><br>
-                <form:textarea path="descricao" type="text"  tabindex="-1"/>
+                <form:textarea path="descricao" type="text"  />
             </div><br>
             <div id="Preco">
-                    <label>Preço</label><br>
-                    <form:input type="number" path="preco" step="0.01" tabindex="-1"/>
+                <label>Preço</label><br>
+                <form:input type="number" path="preco" step="0.01" />
             </div><br>
             <div id="CategoriaProd">
                 <label>Categoria</label><br>
-                <form:select path="categoria" id="ComboCategoria"  tabindex="-1">
+                <form:select path="categoria" id="ComboCategoria"  >
                     <form:option value="PAO"> Pão </form:option>
                     <form:option value="CARNE"> Carne </form:option>
                     <form:option value="SALADA"> Salada </form:option>
@@ -67,6 +67,31 @@
             <br>
         </form:form>
         </div>
+        <form:form class="relatorioVendas" action="/Sistema-Lanchonete-/relatorio" modelAttribute="pedido">
+        <div id ="relatorio">
+            <ul>
+                <li><input type="submit" value="Procurar" /></li>
+                    
+                <li>
+                    <h4> Filtrar entre a data </h4>
+                    <input type="date" name="inicio"/>
+                    <h4>E </h4>
+                    <input type="date" name="fim"/>
+                </li>    
+                <li>
+                    <c:forEach items="${pedido}" var="pedido">
+                        <div>Total de venda no perído: R$ ${pedido.totalRS}</div>
+                    </c:forEach>
+                    <c:forEach items="${produtosLista}" var="produtosLista">
+                        <div>A carne mais vendida é: ${produtosLista.carne}</div>
+                        <div>O pao mais vendido é: ${produtosLista.pao}</div>
+                        <div>A salada mais vendida é: ${produtosLista.salada}</div>
+                        <div>O molho mais vendido é: ${produtosLista.molho}</div>
+                    </c:forEach>
+                </li>
+            </ul>
+        </div>
+        </form:form>
     </div>
     <footer class="rodape">
         <div>Icones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">João Tostes</a> from <a href="https://www.flaticon.com/br/" title="Vinicius Binue">www.binue.com</a></div>
