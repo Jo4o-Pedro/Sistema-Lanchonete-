@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="menu">
-            <a href="<c:url value="index" />" ><h2>LocaDex</h2></a>
+            <a href="<c:url value="index" />" ><img src="https://cdn.discordapp.com/attachments/757733760979435562/770459941458804766/LogoNOvanova.png"></a>
         </div>
     </header>
     <div>
@@ -34,12 +34,11 @@
                     <li class='legenda'><h2>Telefone</h2></li>
                     <li><form:input path="telefone" type="tel" name="telefone"/></li>
                     <li><input type="submit" class="finalcadastro" name="cadastrar" value="Cadastrar"/></li>
-                    <br>
-                    <h3 id='EmailExistente'>Esse Email ja esta cadastrado!</h3>
+                    <li><h3 id='EmailExistente'>Esse Email ja esta cadastrado!</h3></li>
                 </ul>   
             </div>
         </form:form>
     </div>
-    <script src=<c:url value="/resources/js/cadastro.js" /> > </script>
+    <script src=<c:url value="/resources/js/cadastro.js" />> </script>
 </body>
 </html>

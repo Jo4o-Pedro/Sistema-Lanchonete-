@@ -14,7 +14,7 @@
 <body>
     <header>
         <div class="menu">
-            <a href="<c:url value="index" />" ><h2>(っ◔◡◔)っ ♥ Back'sDonald's ♥</h2></a>
+            <a href="<c:url value="index" />" ><img src="https://cdn.discordapp.com/attachments/757733760979435562/770459941458804766/LogoNOvanova.png"></a>
         </div>
         <form:form class="formCadastro" action="/Sistema-Lanchonete-/CrudProd" modelAttribute="produto">
         <div class="menu">
@@ -70,9 +70,9 @@
         <form:form class="relatorioVendas" action="/Sistema-Lanchonete-/relatorio" modelAttribute="pedido">
         <div id ="relatorio">
             <ul>
-                <li><input type="submit" value="Procurar" /></li>
+                <li><input type="submit" value="Procurar" class="btn" /></li>
                     
-                <li>
+                <li class="filtrodedata">
                     <h4> Filtrar entre a data </h4>
                     <input type="date" name="inicio"/>
                     <h4>E </h4>
@@ -93,9 +93,6 @@
         </div>
         </form:form>
     </div>
-    <footer class="rodape">
-        <div>Icones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">João Tostes</a> from <a href="https://www.flaticon.com/br/" title="Vinicius Binue">www.binue.com</a></div>
-    </footer>
 
     <script src="<c:url value='/resources/js/dinamicaCadProd.js' />"></script>
 </body>

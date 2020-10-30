@@ -3,14 +3,31 @@ body{
     width: 100%;
     margin:0;
     padding: 0;
-    background-color: blueviolet;
+    background-image: url('https://cdn.discordapp.com/attachments/757733760979435562/770796988710256660/fUNDO.jpg');
     font-family: 'Spartan', sans-serif;
 }
 
-footer{
-    background-color: rgb(152, 156, 156);
+img{
+    width: 300px;
 }
 
+li{
+    list-style: none;
+}
+
+.btn{
+    background-color: rgba(255, 0, 0, 0.911);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px
+}
 .imagem{
     width: 20px;
     height: 20px;
@@ -41,8 +58,7 @@ footer{
     cursor: pointer;
     display: inline;
     padding: 10px;
-    background-color: rgb(71, 26, 112);
-    color: white;
+    background-color:rgba(255, 255, 255, 0.6)
 }
 .testeimg{
     width: 60px;
@@ -55,7 +71,6 @@ width: 100%;
 #blocoCadastro{
     width: 50%;
     height: 100%;
-    background-color: blueviolet;
     padding:  5% 15% 4% 15%;
     position: relative;
     float: left;

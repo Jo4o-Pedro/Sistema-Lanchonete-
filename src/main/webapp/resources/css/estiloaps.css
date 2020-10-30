@@ -10,13 +10,15 @@ body{
 }
 header{
     right: 0;
-    position: sticky;
-    top: 0;
-    padding: 1px;    
+    top: 0
 }
 
 .esconde{
     display: none;
+}
+#command li{
+    color: white;
+    margin-right: 10px
 }
 
 #logo{
@@ -297,11 +299,11 @@ textarea:focus, input:focus, select:focus {
  padding: 40px 0 0 40px;
  position: fixed;
  top: 0;
- right: -290px; /*iniciando o menu com menos 290px para fora do browser*/
+ right: -390px; /*iniciando o menu com menos 290px para fora do browser*/
  height: 100%;
  z-index: 2;
  transition: 0.5s;
- width: 250px;
+ width: 350px;
 }
 
 /* estilizando o menu + ul */
@@ -349,9 +351,15 @@ textarea:focus, input:focus, select:focus {
 .add{
     background-color:yellow;
     border: none;
-    border-radius:5px;
-    padding:3px 3px 2px 3px;
-    margin:4px;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 10%;
+    cursor: pointer;
+    border-radius: 5px
 }
 
 .quantidade{

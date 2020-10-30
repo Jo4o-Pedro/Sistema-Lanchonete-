@@ -14,7 +14,7 @@
 <body>    
     <header class='menu'>
         <div id='menurelativo'>
-            <div id="logo"><strong>(っ◔◡◔)っ ♥ Back'sDonald's ♥</strong></div>
+            <div id="logo"><img src="https://cdn.discordapp.com/attachments/757733760979435562/770459941458804766/LogoNOvanova.png"></div>
             <nav id="menuinicial">
                 <ul class="btn">
                     <li><button class="btnmenu">Perfil</button><br/></li>
@@ -130,7 +130,7 @@
       <ul>
         <form:form action="/Sistema-Lanchonete-/fimPedido" method="POST">
             <c:forEach items="${carrinho}" var="carrinho">
-                <li>${carrinho.carne} + ${carrinho.salada}
+                <li><a>${carrinho.carne} + ${carrinho.salada}
                  + ${carrinho.pao} + ${carrinho.molho} = R$ ${carrinho.valor}</a></li>
             </c:forEach>
             <c:forEach items="${user}" var="user">

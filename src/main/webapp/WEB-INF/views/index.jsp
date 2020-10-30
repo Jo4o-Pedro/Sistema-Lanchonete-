@@ -18,9 +18,9 @@
             <div class="sombrear">    
                 <nav id="menuinicial">
                     <ul class="btn">
-                        <li><a class="btnmenu">login</a><br/></li>
-                        <li><a href="<c:url value="cadastro" />" >cadastRar</a><br></li>
-                        <li><a href="<c:url value="cadprod" />" >pagina administrativa</a><br></li>
+                        <li><a class="btnmenu">Login</a><br/></li>
+                        <li><a href="<c:url value="cadastro" />" >Cadastrar</a><br></li>
+                        <li><a href="<c:url value="cadprod" />" >Pagina Administrativa</a><br></li>
                     </ul>
                 </nav><br>
             </div>
